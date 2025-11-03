@@ -163,10 +163,12 @@ func display_question() -> void:
 	
 	if Global.current_mode == Global.GameMode.MATH:
 		question_label.text = current_question.get("text", "")
-		answer_input.visible = false
-		answer_input.editable = false
+		answer_input.visible = true
+		answer_input.editable = true
 		option_buttons_container.visible = false
-		input_prompt.text = "ESPAÇO PARA DIGITAR"
+		input_prompt.text = "Digite e pressione ENTER"
+		is_input_active = true
+		answer_input.grab_focus()
 	else:
 		# Language mode
 		question_label.text = current_question.get("text", "")
@@ -191,13 +193,15 @@ func display_question() -> void:
 				answer_input.editable = false
 				option_buttons_container.visible = false
 				input_prompt.text = "ESPAÇO PARA DIGITAR"
+				is_input_active = false
 		else:
 			answer_input.visible = false
 			answer_input.editable = false
 			option_buttons_container.visible = false
 			input_prompt.text = "ESPAÇO PARA DIGITAR"
+			is_input_active = false
 	
-	is_input_active = false
+	# Only reset text and time - is_input_active is already set appropriately above
 	answer_input.text = ""
 	question_start_time = Time.get_ticks_msec() / 1000.0
 
@@ -257,9 +261,17 @@ func check_answer(answer: String) -> void:
 	var correct_answer = str(current_question.get("answer", ""))
 	var is_correct = false
 	
-	# For math, convert to int/float for comparison
+	# For math, convert to float for numeric comparison
 	if Global.current_mode == Global.GameMode.MATH:
-		is_correct = answer.strip_edges() == correct_answer
+		var answer_stripped = answer.strip_edges()
+		var correct_answer_stripped = correct_answer.strip_edges()
+		
+		# Try to convert both to float for numeric comparison
+		var answer_float = answer_stripped.to_float()
+		var correct_float = correct_answer_stripped.to_float()
+		
+		# Compare as floats (handles "7" vs "7.0")
+		is_correct = abs(answer_float - correct_float) < 0.0001
 	else:
 		# For language, case-insensitive comparison
 		is_correct = answer.strip_edges().to_lower() == correct_answer.to_lower()
