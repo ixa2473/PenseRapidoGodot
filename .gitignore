@@ -26,6 +26,7 @@ $RECYCLE.BIN/
 # IDE specific
 .idea/
 .vscode/
+.cursor/
 *.swp
 *.swo
 *~

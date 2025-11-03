@@ -385,4 +385,3 @@ func _on_explanation_continue_pressed() -> void:
 
 func _on_explanation_give_up_pressed() -> void:
 	give_up()
-
