@@ -15,12 +15,18 @@ func _ready() -> void:
 	display_stats()
 
 func _input(event: InputEvent) -> void:
+	var viewport = get_viewport()
+	if not viewport:
+		return
+	
 	if event.is_action_pressed("ui_accept"):
+		# Handle input before scene change to avoid null viewport
+		viewport.set_input_as_handled()
 		play_again()
-		get_viewport().set_input_as_handled()
 	elif event.is_action_pressed("ui_cancel"):
+		# Handle input before scene change to avoid null viewport
+		viewport.set_input_as_handled()
 		go_to_menu()
-		get_viewport().set_input_as_handled()
 
 func determine_result() -> void:
 	is_victory = Global.check_victory()

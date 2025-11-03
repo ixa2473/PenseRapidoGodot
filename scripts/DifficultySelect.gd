@@ -12,6 +12,7 @@ extends Control
 var current_difficulty: Global.Difficulty = Global.Difficulty.FACIL
 var current_mode: Global.GameMode = Global.GameMode.MATH
 var cards: Array[Panel] = []
+var active_tweens: Array[Tween] = []
 
 # Sample questions to display on cards
 var math_samples = {
@@ -35,21 +36,27 @@ func _ready() -> void:
 	update_card_samples()
 
 func _input(event: InputEvent) -> void:
+	var viewport = get_viewport()
+	if not viewport:
+		return
+	
 	if event.is_action_pressed("ui_left"):
 		navigate_difficulty(-1)
-		get_viewport().set_input_as_handled()
+		viewport.set_input_as_handled()
 	elif event.is_action_pressed("ui_right"):
 		navigate_difficulty(1)
-		get_viewport().set_input_as_handled()
+		viewport.set_input_as_handled()
 	elif event.is_action_pressed("toggle_mode"):
 		toggle_mode()
-		get_viewport().set_input_as_handled()
+		viewport.set_input_as_handled()
 	elif event.is_action_pressed("ui_accept"):
+		# Handle input before scene change to avoid null viewport
+		viewport.set_input_as_handled()
 		start_game()
-		get_viewport().set_input_as_handled()
 	elif event.is_action_pressed("ui_cancel"):
+		# Handle input before scene change to avoid null viewport
+		viewport.set_input_as_handled()
 		go_back()
-		get_viewport().set_input_as_handled()
 
 func navigate_difficulty(direction: int) -> void:
 	current_difficulty = wrapi(current_difficulty + direction, 0, Global.Difficulty.size())
@@ -76,6 +83,9 @@ func update_mode_display() -> void:
 		mode_indicator.add_theme_color_override("font_color", Color(0.3, 1.0, 0.5))
 
 func update_cards() -> void:
+	# Kill all existing tweens first
+	kill_all_tweens()
+	
 	for i in range(cards.size()):
 		var card = cards[i]
 		if i == current_difficulty:
@@ -85,6 +95,7 @@ func update_cards() -> void:
 			tween.set_ease(Tween.EASE_OUT)
 			tween.set_trans(Tween.TRANS_CUBIC)
 			tween.tween_property(card, "scale", Vector2(1.1, 1.1), 0.2)
+			active_tweens.append(tween)
 		else:
 			# Non-selected cards - smaller and dimmed
 			card.modulate = Color(0.6, 0.6, 0.6, 1.0)
@@ -92,6 +103,13 @@ func update_cards() -> void:
 			tween.set_ease(Tween.EASE_OUT)
 			tween.set_trans(Tween.TRANS_CUBIC)
 			tween.tween_property(card, "scale", Vector2(0.9, 0.9), 0.2)
+			active_tweens.append(tween)
+
+func kill_all_tweens() -> void:
+	for tween in active_tweens:
+		if is_instance_valid(tween):
+			tween.kill()
+	active_tweens.clear()
 
 func update_card_samples() -> void:
 	var samples = math_samples if current_mode == Global.GameMode.MATH else language_samples
@@ -115,11 +133,14 @@ func update_card_samples() -> void:
 	card_dificil.get_node("VBoxContainer/AgeLabel").text = dificil_samples[2]
 
 func start_game() -> void:
+	# Kill all active tweens before changing scene to prevent crashes
+	kill_all_tweens()
 	# TODO: Play start sound
 	Global.start_game(current_mode, current_difficulty)
 	Global.change_scene("res://scenes/Gameplay.tscn")
 
 func go_back() -> void:
+	# Kill all active tweens before changing scene to prevent crashes
+	kill_all_tweens()
 	# TODO: Play back sound
 	Global.change_scene("res://scenes/MainMenu.tscn")
-

@@ -6,12 +6,18 @@ func _ready() -> void:
 	setup_tutorial_text()
 
 func _input(event: InputEvent) -> void:
+	var viewport = get_viewport()
+	if not viewport:
+		return
+	
 	if event.is_action_pressed("ui_accept"):
+		# Handle input before scene change to avoid null viewport
+		viewport.set_input_as_handled()
 		go_back()
-		get_viewport().set_input_as_handled()
 	elif event.is_action_pressed("ui_cancel"):
+		# Handle input before scene change to avoid null viewport
+		viewport.set_input_as_handled()
 		go_back()
-		get_viewport().set_input_as_handled()
 
 func setup_tutorial_text() -> void:
 	var tutorial_text = """[center][color=#FFD84D][font_size=42]Como Jogar Pense Rápido![/font_size][/color][/center]

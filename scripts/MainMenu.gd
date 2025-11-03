@@ -13,6 +13,7 @@ enum MenuCard { TUTORIAL, JOGAR, OPCOES }
 
 var current_card: MenuCard = MenuCard.JOGAR
 var cards: Array[Panel] = []
+var active_tweens: Array[Tween] = []
 
 func _ready() -> void:
 	# Set up version display
@@ -28,15 +29,20 @@ func _ready() -> void:
 	update_high_score_display()
 
 func _input(event: InputEvent) -> void:
+	var viewport = get_viewport()
+	if not viewport:
+		return
+	
 	if event.is_action_pressed("ui_left"):
 		navigate_card(-1)
-		get_viewport().set_input_as_handled()
+		viewport.set_input_as_handled()
 	elif event.is_action_pressed("ui_right"):
 		navigate_card(1)
-		get_viewport().set_input_as_handled()
+		viewport.set_input_as_handled()
 	elif event.is_action_pressed("ui_accept"):
+		# Handle input before scene change to avoid null viewport
+		viewport.set_input_as_handled()
 		select_card()
-		get_viewport().set_input_as_handled()
 
 func navigate_card(direction: int) -> void:
 	current_card = wrapi(current_card + direction, 0, MenuCard.size())
@@ -44,6 +50,9 @@ func navigate_card(direction: int) -> void:
 	# TODO: Play navigation sound
 
 func update_cards() -> void:
+	# Kill all existing tweens first
+	kill_all_tweens()
+	
 	for i in range(cards.size()):
 		var card = cards[i]
 		if i == current_card:
@@ -53,6 +62,7 @@ func update_cards() -> void:
 			tween.set_ease(Tween.EASE_OUT)
 			tween.set_trans(Tween.TRANS_CUBIC)
 			tween.tween_property(card, "scale", Vector2(1.1, 1.1), 0.2)
+			active_tweens.append(tween)
 		else:
 			# Non-selected cards - smaller and dimmed
 			card.modulate = Color(0.6, 0.6, 0.6, 1.0)
@@ -60,8 +70,18 @@ func update_cards() -> void:
 			tween.set_ease(Tween.EASE_OUT)
 			tween.set_trans(Tween.TRANS_CUBIC)
 			tween.tween_property(card, "scale", Vector2(0.9, 0.9), 0.2)
+			active_tweens.append(tween)
+
+func kill_all_tweens() -> void:
+	for tween in active_tweens:
+		if is_instance_valid(tween):
+			tween.kill()
+	active_tweens.clear()
 
 func select_card() -> void:
+	# Kill all active tweens before changing scene to prevent crashes
+	kill_all_tweens()
+	
 	# TODO: Play selection sound
 	match current_card:
 		MenuCard.TUTORIAL:
@@ -81,7 +101,9 @@ func show_options_menu() -> void:
 	
 	# Reset after delay
 	await get_tree().create_timer(1.0).timeout
-	instructions_label.text = "SPACE CONFIRMAR"
+	# Check if we're still valid (scene might have changed)
+	if is_instance_valid(self):
+		instructions_label.text = "SPACE CONFIRMAR"
 
 func update_high_score_display() -> void:
 	var max_score = 0

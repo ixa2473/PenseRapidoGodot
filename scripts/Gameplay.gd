@@ -214,22 +214,28 @@ func start_growing_animation() -> void:
 	growth_tween.finished.connect(_on_timeout)
 
 func _input(event: InputEvent) -> void:
+	var viewport = get_viewport()
+	if not viewport:
+		return
+	
 	if explanation_popup.visible:
 		if event.is_action_pressed("ui_accept"):
 			hide_explanation()
-			get_viewport().set_input_as_handled()
+			viewport.set_input_as_handled()
 		elif event.is_action_pressed("ui_cancel"):
+			# Handle input before scene change to avoid null viewport
+			viewport.set_input_as_handled()
 			give_up()
-			get_viewport().set_input_as_handled()
 		return
 	
 	if event.is_action_pressed("ui_accept") and not is_input_active:
 		if not option_buttons_container.visible:
 			activate_input()
-			get_viewport().set_input_as_handled()
+			viewport.set_input_as_handled()
 	elif event.is_action_pressed("ui_cancel"):
+		# Handle input before scene change to avoid null viewport
+		viewport.set_input_as_handled()
 		give_up()
-		get_viewport().set_input_as_handled()
 
 func activate_input() -> void:
 	is_input_active = true
