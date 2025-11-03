@@ -8,14 +8,14 @@ Jogo educacional desenvolvido em Godot 4.x para crianças de 6 a 9 anos, focado 
 
 ## ✨ Características
 
-- 🎯 **Dois Modos de Jogo**: Matemática e Português
-- 📊 **Três Níveis de Dificuldade**: Fácil (6-7 anos), Médio (7-8 anos), Difícil (9+ anos)
-- 🎮 **Sistema de Progressão**: 7 fases por jogo com aumento gradual de dificuldade
-- ❤️ **Sistema de Vidas**: 3 vidas por jogo, incentivando atenção e aprendizado
-- 📚 **Explicações Educativas**: Feedback imediato com explicações quando errar
-- 🏆 **Sistema de Pontuação**: Pontos baseados na velocidade de resposta
-- 💾 **Salvamento Automático**: High scores salvos por modo e dificuldade
-- ⌨️ **Controles Totalmente por Teclado**: Acessível e fácil de usar
+- **Dois Modos de Jogo**: Matemática e Português
+- **Três Níveis de Dificuldade**: Fácil (6-7 anos), Médio (7-8 anos), Difícil (9+ anos)
+- **Sistema de Progressão**: 7 fases por jogo com aumento gradual de dificuldade
+- **Sistema de Vidas**: 3 vidas por jogo, incentivando atenção e aprendizado
+- **Explicações Educativas**: Feedback imediato com explicações quando errar
+- **Sistema de Pontuação**: Pontos baseados na velocidade de resposta
+- **Salvamento Automático**: High scores salvos por modo e dificuldade
+- **Controles Totalmente por Teclado**: Acessível e fácil de usar
 
 ## 🎯 Conteúdo Educacional
 
@@ -44,62 +44,3 @@ Jogo educacional desenvolvido em Godot 4.x para crianças de 6 a 9 anos, focado 
 3. Digite a resposta antes que fique muito grande!
 4. Responda corretamente para ganhar pontos e avançar
 5. Complete 7 fases sem perder todas as vidas para vencer!
-
-## 🛠️ Instalação e Setup
-
-### Requisitos
-- Godot 4.3 ou superior
-- Sistema operacional: Windows, Linux, ou macOS
-
-### Passos
-1. Clone este repositório
-2. Abra o Godot Engine
-3. Clique em "Importar" e selecione o arquivo `project.godot`
-4. Pressione F5 para jogar!
-
-Para instruções detalhadas de teste, consulte [SETUP_AND_TESTING.md](SETUP_AND_TESTING.md).
-
-## 📁 Estrutura do Projeto
-
-```
-/scenes/          # Cenas do Godot (.tscn)
-/scripts/         # Scripts GDScript (.gd)
-/data/           # Dados de perguntas (JSON)
-/assets/         # Recursos (áudio, fontes, imagens)
-```
-
-## 🎨 Assets Necessários
-
-O jogo está totalmente funcional, mas pode ser aprimorado com:
-- 🎵 Música de fundo e efeitos sonoros
-- 🖼️ Gráficos personalizados e ícones
-- ✍️ Fontes customizadas
-
-Veja os READMEs nas pastas de assets para mais detalhes.
-
-## 🎓 Contexto Acadêmico
-
-Projeto desenvolvido para Quest III de Experimentação de Protótipos na Universidade de Fortaleza (Unifor).
-
-## 👥 Equipe
-
-Desenvolvido com dedicação para tornar o aprendizado mais divertido!
-
-## 📄 Licença
-
-Projeto acadêmico - Unifor
-
-## 🚀 Futuras Melhorias
-
-- [ ] Sistema de pausa durante gameplay
-- [ ] Mais tipos de perguntas
-- [ ] Perfis de múltiplos jogadores
-- [ ] Estatísticas detalhadas de aprendizado
-- [ ] Modos de acessibilidade
-- [ ] Versão mobile (Android/iOS)
-
----
-
-**Versão**: 1.00  
-**Engine**: Godot 4.3+  
-**Data**: Novembro 2025
