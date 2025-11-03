@@ -1,0 +1,685 @@
+{
+  "facil": {
+    "age_range": "6-7",
+    "phases": 7,
+    "questions": [
+      {
+        "type": "classification",
+        "text": "casa",
+        "question": "É um substantivo?",
+        "options": ["Sim", "Não"],
+        "answer": "Sim",
+        "explanation": "Casa é um substantivo, pois nomeia um lugar."
+      },
+      {
+        "type": "classification",
+        "text": "correr",
+        "question": "É um verbo?",
+        "options": ["Sim", "Não"],
+        "answer": "Sim",
+        "explanation": "Correr é um verbo, pois indica ação."
+      },
+      {
+        "type": "classification",
+        "text": "bonito",
+        "question": "É um adjetivo?",
+        "options": ["Sim", "Não"],
+        "answer": "Sim",
+        "explanation": "Bonito é um adjetivo, pois qualifica algo."
+      },
+      {
+        "type": "classification",
+        "text": "gato",
+        "question": "É um substantivo?",
+        "options": ["Sim", "Não"],
+        "answer": "Sim",
+        "explanation": "Gato é um substantivo, pois nomeia um animal."
+      },
+      {
+        "type": "classification",
+        "text": "pular",
+        "question": "É um verbo?",
+        "options": ["Sim", "Não"],
+        "answer": "Sim",
+        "explanation": "Pular é um verbo, pois indica ação."
+      },
+      {
+        "type": "classification",
+        "text": "grande",
+        "question": "É um adjetivo?",
+        "options": ["Sim", "Não"],
+        "answer": "Sim",
+        "explanation": "Grande é um adjetivo, pois qualifica tamanho."
+      },
+      {
+        "type": "classification",
+        "text": "bola",
+        "question": "É um substantivo?",
+        "options": ["Sim", "Não"],
+        "answer": "Sim",
+        "explanation": "Bola é um substantivo, pois nomeia um objeto."
+      },
+      {
+        "type": "classification",
+        "text": "comer",
+        "question": "É um verbo?",
+        "options": ["Sim", "Não"],
+        "answer": "Sim",
+        "explanation": "Comer é um verbo, pois indica ação."
+      },
+      {
+        "type": "classification",
+        "text": "azul",
+        "question": "É um adjetivo?",
+        "options": ["Sim", "Não"],
+        "answer": "Sim",
+        "explanation": "Azul é um adjetivo, pois qualifica cor."
+      },
+      {
+        "type": "classification",
+        "text": "cachorro",
+        "question": "É um substantivo?",
+        "options": ["Sim", "Não"],
+        "answer": "Sim",
+        "explanation": "Cachorro é um substantivo, pois nomeia um animal."
+      },
+      {
+        "type": "classification",
+        "text": "dormir",
+        "question": "É um verbo?",
+        "options": ["Sim", "Não"],
+        "answer": "Sim",
+        "explanation": "Dormir é um verbo, pois indica ação."
+      },
+      {
+        "type": "classification",
+        "text": "feliz",
+        "question": "É um adjetivo?",
+        "options": ["Sim", "Não"],
+        "answer": "Sim",
+        "explanation": "Feliz é um adjetivo, pois qualifica sentimento."
+      },
+      {
+        "type": "classification",
+        "text": "livro",
+        "question": "É um substantivo?",
+        "options": ["Sim", "Não"],
+        "answer": "Sim",
+        "explanation": "Livro é um substantivo, pois nomeia um objeto."
+      },
+      {
+        "type": "classification",
+        "text": "cantar",
+        "question": "É um verbo?",
+        "options": ["Sim", "Não"],
+        "answer": "Sim",
+        "explanation": "Cantar é um verbo, pois indica ação."
+      },
+      {
+        "type": "classification",
+        "text": "pequeno",
+        "question": "É um adjetivo?",
+        "options": ["Sim", "Não"],
+        "answer": "Sim",
+        "explanation": "Pequeno é um adjetivo, pois qualifica tamanho."
+      },
+      {
+        "type": "classification",
+        "text": "árvore",
+        "question": "É um substantivo?",
+        "options": ["Sim", "Não"],
+        "answer": "Sim",
+        "explanation": "Árvore é um substantivo, pois nomeia uma planta."
+      },
+      {
+        "type": "classification",
+        "text": "estudar",
+        "question": "É um verbo?",
+        "options": ["Sim", "Não"],
+        "answer": "Sim",
+        "explanation": "Estudar é um verbo, pois indica ação."
+      },
+      {
+        "type": "classification",
+        "text": "verde",
+        "question": "É um adjetivo?",
+        "options": ["Sim", "Não"],
+        "answer": "Sim",
+        "explanation": "Verde é um adjetivo, pois qualifica cor."
+      },
+      {
+        "type": "classification",
+        "text": "flor",
+        "question": "É um substantivo?",
+        "options": ["Sim", "Não"],
+        "answer": "Sim",
+        "explanation": "Flor é um substantivo, pois nomeia uma planta."
+      },
+      {
+        "type": "classification",
+        "text": "brincar",
+        "question": "É um verbo?",
+        "options": ["Sim", "Não"],
+        "answer": "Sim",
+        "explanation": "Brincar é um verbo, pois indica ação."
+      }
+    ]
+  },
+  "medio": {
+    "age_range": "7-8",
+    "phases": 7,
+    "questions": [
+      {
+        "type": "classification",
+        "text": "alegria",
+        "question": "Qual é a classe gramatical?",
+        "options": ["Substantivo", "Verbo", "Adjetivo"],
+        "answer": "Substantivo",
+        "explanation": "Alegria é um substantivo abstrato que nomeia um sentimento."
+      },
+      {
+        "type": "classification",
+        "text": "rapidamente",
+        "question": "Qual é a classe gramatical?",
+        "options": ["Advérbio", "Adjetivo", "Substantivo"],
+        "answer": "Advérbio",
+        "explanation": "Rapidamente é um advérbio de modo."
+      },
+      {
+        "type": "syllable",
+        "text": "música",
+        "question": "Qual é a sílaba tônica?",
+        "syllables": ["mú", "si", "ca"],
+        "answer": 0,
+        "explanation": "A sílaba tônica de 'música' é 'mú', sendo uma proparoxítona."
+      },
+      {
+        "type": "syllable",
+        "text": "computador",
+        "question": "Qual é a sílaba tônica?",
+        "syllables": ["com", "pu", "ta", "dor"],
+        "answer": 3,
+        "explanation": "A sílaba tônica de 'computador' é 'dor', sendo uma oxítona."
+      },
+      {
+        "type": "spelling",
+        "text": "pa__aro",
+        "question": "Complete com a grafia correta:",
+        "options": ["ss", "ç"],
+        "answer": "ss",
+        "explanation": "A palavra correta é 'pássaro', escrita com 'ss'."
+      },
+      {
+        "type": "spelling",
+        "text": "a__úcar",
+        "question": "Complete com a grafia correta:",
+        "options": ["ç", "ss"],
+        "answer": "ç",
+        "explanation": "A palavra correta é 'açúcar', escrita com 'ç'."
+      },
+      {
+        "type": "classification",
+        "text": "beleza",
+        "question": "Qual é a classe gramatical?",
+        "options": ["Substantivo", "Adjetivo", "Verbo"],
+        "answer": "Substantivo",
+        "explanation": "Beleza é um substantivo abstrato."
+      },
+      {
+        "type": "syllable",
+        "text": "lâmpada",
+        "question": "Qual é a sílaba tônica?",
+        "syllables": ["lâm", "pa", "da"],
+        "answer": 0,
+        "explanation": "A sílaba tônica de 'lâmpada' é 'lâm', sendo uma proparoxítona."
+      },
+      {
+        "type": "classification",
+        "text": "devagar",
+        "question": "Qual é a classe gramatical?",
+        "options": ["Advérbio", "Adjetivo", "Verbo"],
+        "answer": "Advérbio",
+        "explanation": "Devagar é um advérbio de modo."
+      },
+      {
+        "type": "syllable",
+        "text": "jacaré",
+        "question": "Qual é a sílaba tônica?",
+        "syllables": ["ja", "ca", "ré"],
+        "answer": 2,
+        "explanation": "A sílaba tônica de 'jacaré' é 'ré', sendo uma oxítona."
+      },
+      {
+        "type": "spelling",
+        "text": "cre__er",
+        "question": "Complete com a grafia correta:",
+        "options": ["sc", "ç"],
+        "answer": "sc",
+        "explanation": "A palavra correta é 'crescer', escrita com 'sc'."
+      },
+      {
+        "type": "classification",
+        "text": "coragem",
+        "question": "Qual é a classe gramatical?",
+        "options": ["Substantivo", "Adjetivo", "Verbo"],
+        "answer": "Substantivo",
+        "explanation": "Coragem é um substantivo abstrato."
+      },
+      {
+        "type": "syllable",
+        "text": "fácil",
+        "question": "Qual é a sílaba tônica?",
+        "syllables": ["fá", "cil"],
+        "answer": 0,
+        "explanation": "A sílaba tônica de 'fácil' é 'fá', sendo uma paroxítona."
+      },
+      {
+        "type": "spelling",
+        "text": "de__er",
+        "question": "Complete com a grafia correta:",
+        "options": ["sc", "ç"],
+        "answer": "sc",
+        "explanation": "A palavra correta é 'descer', escrita com 'sc'."
+      },
+      {
+        "type": "classification",
+        "text": "tristeza",
+        "question": "Qual é a classe gramatical?",
+        "options": ["Substantivo", "Adjetivo", "Verbo"],
+        "answer": "Substantivo",
+        "explanation": "Tristeza é um substantivo abstrato que nomeia um sentimento."
+      },
+      {
+        "type": "syllable",
+        "text": "difícil",
+        "question": "Qual é a sílaba tônica?",
+        "syllables": ["di", "fí", "cil"],
+        "answer": 1,
+        "explanation": "A sílaba tônica de 'difícil' é 'fí', sendo uma paroxítona."
+      },
+      {
+        "type": "spelling",
+        "text": "cabe__a",
+        "question": "Complete com a grafia correta:",
+        "options": ["ç", "ss"],
+        "answer": "ç",
+        "explanation": "A palavra correta é 'cabeça', escrita com 'ç'."
+      },
+      {
+        "type": "classification",
+        "text": "livraria",
+        "question": "Qual é a classe gramatical?",
+        "options": ["Substantivo", "Adjetivo", "Verbo"],
+        "answer": "Substantivo",
+        "explanation": "Livraria é um substantivo concreto que nomeia um lugar."
+      },
+      {
+        "type": "syllable",
+        "text": "café",
+        "question": "Qual é a sílaba tônica?",
+        "syllables": ["ca", "fé"],
+        "answer": 1,
+        "explanation": "A sílaba tônica de 'café' é 'fé', sendo uma oxítona."
+      },
+      {
+        "type": "spelling",
+        "text": "ma__ã",
+        "question": "Complete com a grafia correta:",
+        "options": ["ç", "ss"],
+        "answer": "ç",
+        "explanation": "A palavra correta é 'maçã', escrita com 'ç'."
+      },
+      {
+        "type": "classification",
+        "text": "amanhã",
+        "question": "Qual é a classe gramatical?",
+        "options": ["Advérbio", "Substantivo", "Adjetivo"],
+        "answer": "Advérbio",
+        "explanation": "Amanhã é um advérbio de tempo."
+      },
+      {
+        "type": "syllable",
+        "text": "sofá",
+        "question": "Qual é a sílaba tônica?",
+        "syllables": ["so", "fá"],
+        "answer": 1,
+        "explanation": "A sílaba tônica de 'sofá' é 'fá', sendo uma oxítona."
+      },
+      {
+        "type": "spelling",
+        "text": "pi__ina",
+        "question": "Complete com a grafia correta:",
+        "options": ["sc", "ç"],
+        "answer": "sc",
+        "explanation": "A palavra correta é 'piscina', escrita com 'sc'."
+      },
+      {
+        "type": "classification",
+        "text": "felicidade",
+        "question": "Qual é a classe gramatical?",
+        "options": ["Substantivo", "Adjetivo", "Advérbio"],
+        "answer": "Substantivo",
+        "explanation": "Felicidade é um substantivo abstrato."
+      },
+      {
+        "type": "syllable",
+        "text": "árvore",
+        "question": "Qual é a sílaba tônica?",
+        "syllables": ["ár", "vo", "re"],
+        "answer": 0,
+        "explanation": "A sílaba tônica de 'árvore' é 'ár', sendo uma proparoxítona."
+      },
+      {
+        "type": "spelling",
+        "text": "te__oura",
+        "question": "Complete com a grafia correta:",
+        "options": ["s", "ss"],
+        "answer": "s",
+        "explanation": "A palavra correta é 'tesoura', escrita com 's' simples."
+      },
+      {
+        "type": "classification",
+        "text": "claramente",
+        "question": "Qual é a classe gramatical?",
+        "options": ["Advérbio", "Adjetivo", "Substantivo"],
+        "answer": "Advérbio",
+        "explanation": "Claramente é um advérbio de modo."
+      },
+      {
+        "type": "syllable",
+        "text": "máquina",
+        "question": "Qual é a sílaba tônica?",
+        "syllables": ["má", "qui", "na"],
+        "answer": 0,
+        "explanation": "A sílaba tônica de 'máquina' é 'má', sendo uma proparoxítona."
+      }
+    ]
+  },
+  "dificil": {
+    "age_range": "9",
+    "phases": 7,
+    "questions": [
+      {
+        "type": "classification",
+        "text": "Jícara",
+        "question": "Qual é a classificação prosódica?",
+        "options": ["Proparoxítona", "Paroxítona", "Oxítona"],
+        "answer": "Proparoxítona",
+        "explanation": "Jícara é proparoxítona, com acento na antepenúltima sílaba 'Jí'."
+      },
+      {
+        "type": "classification",
+        "text": "Sedex",
+        "question": "É uma palavra:",
+        "options": ["Oxítona", "Paroxítona", "Proparoxítona"],
+        "answer": "Oxítona",
+        "explanation": "Sedex é oxítona, com tonicidade na última sílaba 'dex'."
+      },
+      {
+        "type": "spelling",
+        "text": "exce__ão",
+        "question": "Complete com a grafia correta:",
+        "options": ["ç", "ss", "s"],
+        "answer": "ç",
+        "explanation": "A palavra correta é 'exceção', escrita com 'ç'."
+      },
+      {
+        "type": "classification",
+        "text": "cômodo",
+        "question": "Qual é a classificação prosódica?",
+        "options": ["Proparoxítona", "Paroxítona", "Oxítona"],
+        "answer": "Proparoxítona",
+        "explanation": "Cômodo é proparoxítona, com acento na antepenúltima sílaba 'cô'."
+      },
+      {
+        "type": "classification",
+        "text": "através",
+        "question": "Qual é a classe gramatical?",
+        "options": ["Preposição", "Advérbio", "Conjunção"],
+        "answer": "Preposição",
+        "explanation": "Através é uma preposição que indica meio ou passagem."
+      },
+      {
+        "type": "spelling",
+        "text": "con__iência",
+        "question": "Complete com a grafia correta:",
+        "options": ["sc", "c", "ç"],
+        "answer": "sc",
+        "explanation": "A palavra correta é 'consciência', escrita com 'sc'."
+      },
+      {
+        "type": "classification",
+        "text": "hábito",
+        "question": "Qual é a classificação prosódica?",
+        "options": ["Proparoxítona", "Paroxítona", "Oxítona"],
+        "answer": "Proparoxítona",
+        "explanation": "Hábito é proparoxítona, com acento na antepenúltima sílaba 'há'."
+      },
+      {
+        "type": "classification",
+        "text": "porém",
+        "question": "Qual é a classe gramatical?",
+        "options": ["Conjunção", "Advérbio", "Preposição"],
+        "answer": "Conjunção",
+        "explanation": "Porém é uma conjunção adversativa."
+      },
+      {
+        "type": "spelling",
+        "text": "de__er",
+        "question": "Complete com a grafia correta:",
+        "options": ["sc", "c", "ç"],
+        "answer": "sc",
+        "explanation": "A palavra correta é 'descer', escrita com 'sc'."
+      },
+      {
+        "type": "classification",
+        "text": "lâmpada",
+        "question": "Qual é a classificação prosódica?",
+        "options": ["Proparoxítona", "Paroxítona", "Oxítona"],
+        "answer": "Proparoxítona",
+        "explanation": "Lâmpada é proparoxítona, com acento na antepenúltima sílaba 'lâm'."
+      },
+      {
+        "type": "classification",
+        "text": "entretanto",
+        "question": "Qual é a classe gramatical?",
+        "options": ["Conjunção", "Advérbio", "Preposição"],
+        "answer": "Conjunção",
+        "explanation": "Entretanto é uma conjunção adversativa."
+      },
+      {
+        "type": "spelling",
+        "text": "a__en__ão",
+        "question": "Complete com a grafia correta:",
+        "options": ["sc / ç", "ss / ç", "s / s"],
+        "answer": "sc / ç",
+        "explanation": "A palavra correta é 'ascensão', escrita com 'sc' e 'ç'."
+      },
+      {
+        "type": "classification",
+        "text": "ônibus",
+        "question": "Qual é a classificação prosódica?",
+        "options": ["Proparoxítona", "Paroxítona", "Oxítona"],
+        "answer": "Proparoxítona",
+        "explanation": "Ônibus é proparoxítona, com acento na antepenúltima sílaba 'ô'."
+      },
+      {
+        "type": "classification",
+        "text": "todavia",
+        "question": "Qual é a classe gramatical?",
+        "options": ["Conjunção", "Advérbio", "Preposição"],
+        "answer": "Conjunção",
+        "explanation": "Todavia é uma conjunção adversativa."
+      },
+      {
+        "type": "spelling",
+        "text": "a__é__imo",
+        "question": "Complete com a grafia correta:",
+        "options": ["c / ss", "ss / c", "ç / c"],
+        "answer": "c / ss",
+        "explanation": "A palavra correta é 'acéssimo' (superlativo), escrita com 'c' e 'ss'."
+      },
+      {
+        "type": "classification",
+        "text": "público",
+        "question": "Qual é a classificação prosódica?",
+        "options": ["Proparoxítona", "Paroxítona", "Oxítona"],
+        "answer": "Proparoxítona",
+        "explanation": "Público é proparoxítona, com acento na antepenúltima sílaba 'pú'."
+      },
+      {
+        "type": "classification",
+        "text": "contudo",
+        "question": "Qual é a classe gramatical?",
+        "options": ["Conjunção", "Advérbio", "Preposição"],
+        "answer": "Conjunção",
+        "explanation": "Contudo é uma conjunção adversativa."
+      },
+      {
+        "type": "spelling",
+        "text": "obse__ão",
+        "question": "Complete com a grafia correta:",
+        "options": ["ss", "ç", "s"],
+        "answer": "ss",
+        "explanation": "A palavra correta é 'obsessão', escrita com 'ss'."
+      },
+      {
+        "type": "classification",
+        "text": "época",
+        "question": "Qual é a classificação prosódica?",
+        "options": ["Proparoxítona", "Paroxítona", "Oxítona"],
+        "answer": "Proparoxítona",
+        "explanation": "Época é proparoxítona, com acento na antepenúltima sílaba 'é'."
+      },
+      {
+        "type": "classification",
+        "text": "embora",
+        "question": "Qual é a classe gramatical?",
+        "options": ["Conjunção", "Advérbio", "Preposição"],
+        "answer": "Conjunção",
+        "explanation": "Embora é uma conjunção concessiva."
+      },
+      {
+        "type": "spelling",
+        "text": "nece__ário",
+        "question": "Complete com a grafia correta:",
+        "options": ["ss", "ç", "s"],
+        "answer": "ss",
+        "explanation": "A palavra correta é 'necessário', escrita com 'ss'."
+      },
+      {
+        "type": "classification",
+        "text": "pêssego",
+        "question": "Qual é a classificação prosódica?",
+        "options": ["Proparoxítona", "Paroxítona", "Oxítona"],
+        "answer": "Proparoxítona",
+        "explanation": "Pêssego é proparoxítona, com acento na antepenúltima sílaba 'pês'."
+      },
+      {
+        "type": "classification",
+        "text": "conquanto",
+        "question": "Qual é a classe gramatical?",
+        "options": ["Conjunção", "Advérbio", "Preposição"],
+        "answer": "Conjunção",
+        "explanation": "Conquanto é uma conjunção concessiva."
+      },
+      {
+        "type": "spelling",
+        "text": "exce__o",
+        "question": "Complete com a grafia correta:",
+        "options": ["ss", "ç", "s"],
+        "answer": "ss",
+        "explanation": "A palavra correta é 'excesso', escrita com 'ss'."
+      },
+      {
+        "type": "classification",
+        "text": "rápido",
+        "question": "Qual é a classificação prosódica?",
+        "options": ["Proparoxítona", "Paroxítona", "Oxítona"],
+        "answer": "Proparoxítona",
+        "explanation": "Rápido é proparoxítona, com acento na antepenúltima sílaba 'rá'."
+      },
+      {
+        "type": "classification",
+        "text": "ainda que",
+        "question": "Qual é a classe gramatical?",
+        "options": ["Conjunção", "Advérbio", "Preposição"],
+        "answer": "Conjunção",
+        "explanation": "Ainda que é uma locução conjuntiva concessiva."
+      },
+      {
+        "type": "spelling",
+        "text": "su__eder",
+        "question": "Complete com a grafia correta:",
+        "options": ["c", "ss", "ç"],
+        "answer": "c",
+        "explanation": "A palavra correta é 'suceder', escrita com 'c'."
+      },
+      {
+        "type": "classification",
+        "text": "fantástico",
+        "question": "Qual é a classificação prosódica?",
+        "options": ["Proparoxítona", "Paroxítona", "Oxítona"],
+        "answer": "Proparoxítona",
+        "explanation": "Fantástico é proparoxítona, com acento na antepenúltima sílaba 'tás'."
+      },
+      {
+        "type": "spelling",
+        "text": "di__iplina",
+        "question": "Complete com a grafia correta:",
+        "options": ["sc", "c", "s"],
+        "answer": "sc",
+        "explanation": "A palavra correta é 'disciplina', escrita com 'sc'."
+      },
+      {
+        "type": "classification",
+        "text": "médico",
+        "question": "Qual é a classificação prosódica?",
+        "options": ["Proparoxítona", "Paroxítona", "Oxítona"],
+        "answer": "Proparoxítona",
+        "explanation": "Médico é proparoxítona, com acento na antepenúltima sílaba 'mé'."
+      },
+      {
+        "type": "spelling",
+        "text": "adole__ente",
+        "question": "Complete com a grafia correta:",
+        "options": ["sc", "c", "ç"],
+        "answer": "sc",
+        "explanation": "A palavra correta é 'adolescente', escrita com 'sc'."
+      },
+      {
+        "type": "classification",
+        "text": "sílaba",
+        "question": "Qual é a classificação prosódica?",
+        "options": ["Proparoxítona", "Paroxítona", "Oxítona"],
+        "answer": "Proparoxítona",
+        "explanation": "Sílaba é proparoxítona, com acento na antepenúltima sílaba 'sí'."
+      },
+      {
+        "type": "spelling",
+        "text": "pi__ina",
+        "question": "Complete com a grafia correta:",
+        "options": ["sc", "c", "ss"],
+        "answer": "sc",
+        "explanation": "A palavra correta é 'piscina', escrita com 'sc'."
+      },
+      {
+        "type": "classification",
+        "text": "único",
+        "question": "Qual é a classificação prosódica?",
+        "options": ["Proparoxítona", "Paroxítona", "Oxítona"],
+        "answer": "Proparoxítona",
+        "explanation": "Único é proparoxítona, com acento na antepenúltima sílaba 'ú'."
+      },
+      {
+        "type": "spelling",
+        "text": "flo__er",
+        "question": "Complete com a grafia correta:",
+        "options": ["sc", "c", "ç"],
+        "answer": "sc",
+        "explanation": "A palavra correta é 'florescer', escrita com 'sc'."
+      }
+    ]
+  }
+}
+

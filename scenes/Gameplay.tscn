@@ -1,0 +1,214 @@
+[gd_scene load_steps=3 format=3 uid="uid://bp4kf8xyd5j8n"]
+
+[ext_resource type="Script" uid="uid://cvjbvi1n8drvs" path="res://scripts/Gameplay.gd" id="1_gameplay"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_popup"]
+bg_color = Color(0.15, 0.15, 0.2, 0.95)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_size = 10
+
+[node name="Gameplay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gameplay")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.12, 0.15, 0.18, 1)
+
+[node name="TopBar" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 80.0
+grow_horizontal = 2
+theme_override_constants/separation = 20
+
+[node name="PhaseContainer" type="HBoxContainer" parent="TopBar"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="InfoPanel" type="VBoxContainer" parent="TopBar"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_constants/separation = 5
+alignment = 2
+
+[node name="ModeLabel" type="Label" parent="TopBar/InfoPanel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
+theme_override_font_sizes/font_size = 20
+text = "Modo FÁCIL"
+horizontal_alignment = 2
+
+[node name="LivesLabel" type="Label" parent="TopBar/InfoPanel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 1, 0.3, 1)
+theme_override_font_sizes/font_size = 32
+text = "×3"
+horizontal_alignment = 2
+
+[node name="DifficultyLabel" type="Label" parent="TopBar/InfoPanel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_font_sizes/font_size = 16
+text = "Dificuldade"
+horizontal_alignment = 2
+
+[node name="GrowingItemContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -100.0
+offset_right = 300.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="QuestionLabel" type="Label" parent="GrowingItemContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "7 × 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BottomBar" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -150.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="InputContainer" type="VBoxContainer" parent="BottomBar"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="InputPrompt" type="Label" parent="BottomBar/InputContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_font_sizes/font_size = 22
+text = "ESPAÇO PARA DIGITAR"
+horizontal_alignment = 1
+
+[node name="AnswerInput" type="LineEdit" parent="BottomBar/InputContainer"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+placeholder_text = "Digite aqui..."
+alignment = 1
+max_length = 20
+
+[node name="OptionButtonsContainer" type="VBoxContainer" parent="BottomBar/InputContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="ExplanationPopup" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -200.0
+offset_right = 350.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_popup")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ExplanationPopup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="TitleLabel" type="Label" parent="ExplanationPopup/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.3, 0.3, 1)
+theme_override_font_sizes/font_size = 32
+text = "RESPOSTA ERRADA"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="ExplanationPopup/VBoxContainer"]
+layout_mode = 2
+
+[node name="QuestionLabel" type="Label" parent="ExplanationPopup/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Pergunta: 7 × 3"
+autowrap_mode = 2
+
+[node name="AnswerLabel" type="Label" parent="ExplanationPopup/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 1, 0.3, 1)
+theme_override_font_sizes/font_size = 24
+text = "Resposta: 21"
+
+[node name="ExplanationLabel" type="Label" parent="ExplanationPopup/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 18
+text = "Sete vezes três é igual a vinte e um."
+autowrap_mode = 2
+vertical_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="ExplanationPopup/VBoxContainer"]
+layout_mode = 2
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="ExplanationPopup/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="GiveUpButton" type="Button" parent="ExplanationPopup/VBoxContainer/ButtonsContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Shift DESISTIR"
+
+[node name="ContinueButton" type="Button" parent="ExplanationPopup/VBoxContainer/ButtonsContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 1, 0.3, 1)
+theme_override_font_sizes/font_size = 18
+text = "SPACE CONTINUAR"
+
+[connection signal="pressed" from="ExplanationPopup/VBoxContainer/ButtonsContainer/GiveUpButton" to="." method="_on_explanation_give_up_pressed"]
+[connection signal="pressed" from="ExplanationPopup/VBoxContainer/ButtonsContainer/ContinueButton" to="." method="_on_explanation_continue_pressed"]
