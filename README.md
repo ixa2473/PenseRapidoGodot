@@ -4,7 +4,7 @@ Jogo educacional desenvolvido em Godot 4.x para crianças de 6 a 9 anos, focado 
 
 ## 📋 Descrição
 
-**Pense Rápido!** é inspirado no popular jogo "漢字でGO!" e desafiaalunos a responder perguntas de matemática e gramática portuguesa antes que cresçam demais na tela! Com sistema de vidas, progressão por fases, e dificuldades ajustadas por idade, o jogo torna o aprendizado divertido e engajante.
+**Pense Rápido!** é inspirado no popular jogo "漢字でGO!" e desafia alunos a responder perguntas de matemática e gramática brasileira antes que cresçam demais na tela! Com sistema de vidas, progressão por fases, e dificuldades ajustadas por idade, o jogo torna o aprendizado divertido e engajante.
 
 ## ✨ Características
 
