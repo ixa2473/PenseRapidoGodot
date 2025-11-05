@@ -3,7 +3,7 @@ extends Control
 enum MenuCard { TUTORIAL, JOGAR, OPCOES }
 
 @onready var title_label: Label = $VBoxContainer/TitleLabel
-@onready var version_label: Label = $VBoxContainer/VersionLabel
+@onready var version_label: Label = $ColorRect/VersionLabel
 @onready var cards_container: HBoxContainer = $VBoxContainer/CardsContainer
 @onready var card_tutorial: Panel = $VBoxContainer/CardsContainer/CardTutorial
 @onready var card_jogar: Panel = $VBoxContainer/CardsContainer/CardJogar
