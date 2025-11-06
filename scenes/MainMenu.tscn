@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bh3hf0r4wt7qg"]
+[gd_scene load_steps=7 format=3 uid="uid://bh3hf0r4wt7qg"]
 
 [ext_resource type="Script" uid="uid://bewsq4537nwmj" path="res://scripts/MainMenu.gd" id="1_main_menu"]
 [ext_resource type="Texture2D" uid="uid://cvwsx00buyql6" path="res://assets/images/Icons/PlayGreen.png" id="2_0ykhv"]
@@ -13,6 +13,23 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 shadow_size = 5
 shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ow34m"]
+bg_color = Color(1, 1, 1, 0.02745098)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 0)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -38,7 +55,7 @@ offset_left = 32.0
 offset_top = 664.0
 offset_right = 108.0
 offset_bottom = 692.0
-theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 0.2901961)
 theme_override_font_sizes/font_size = 20
 text = "ver 1.00"
 horizontal_alignment = 1
@@ -60,6 +77,7 @@ theme_override_constants/separation = 30
 
 [node name="TitleLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
 theme_override_font_sizes/font_size = 64
 text = "Pense Rápido!"
@@ -233,7 +251,7 @@ texture = ExtResource("4_ow34m")
 layout_mode = 2
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
 theme_override_font_sizes/font_size = 24
-text = "SPACE CONFIRMAR"
+text = " "
 horizontal_alignment = 1
 
 [node name="HighScoreLabel" type="Label" parent="."]
@@ -241,12 +259,30 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -200.0
-offset_top = 20.0
-offset_right = -20.0
-offset_bottom = 60.0
+offset_left = -260.09497
+offset_top = 72.41
+offset_right = -80.095215
+offset_bottom = 119.41006
 grow_horizontal = 0
 theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
 theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_ow34m")
 text = "RECORDE: 0"
-horizontal_alignment = 2
+horizontal_alignment = 1
+
+[node name="PressioneEspacoLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -168.5
+offset_top = 280.0
+offset_right = 166.5
+offset_bottom = 308.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.3882353)
+theme_override_font_sizes/font_size = 20
+text = "Pressione ESPAÇO para selecionar."
