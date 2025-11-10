@@ -8,6 +8,10 @@ extends Control
 @onready var card_medio: Panel = $VBoxContainer/CardsContainer/CardMedio
 @onready var card_dificil: Panel = $VBoxContainer/CardsContainer/CardDificil
 @onready var instructions_container: HBoxContainer = $VBoxContainer/InstructionsContainer
+@onready var nav_sound: AudioStreamPlayer = $NavSound
+@onready var toggle_sound: AudioStreamPlayer = $ToggleSound
+@onready var start_sound: AudioStreamPlayer = $StartSound
+@onready var back_sound: AudioStreamPlayer = $BackSound
 
 var current_difficulty: Global.Difficulty = Global.Difficulty.FACIL
 var current_mode: Global.GameMode = Global.GameMode.MATH
@@ -62,7 +66,8 @@ func navigate_difficulty(direction: int) -> void:
 	current_difficulty = wrapi(current_difficulty + direction, 0, Global.Difficulty.size())
 	update_cards()
 	update_card_samples()
-	# TODO: Play navigation sound
+	if Global.sound_enabled:
+		nav_sound.play()
 
 func toggle_mode() -> void:
 	if current_mode == Global.GameMode.MATH:
@@ -72,7 +77,8 @@ func toggle_mode() -> void:
 	
 	update_mode_display()
 	update_card_samples()
-	# TODO: Play toggle sound
+	if Global.sound_enabled:
+		toggle_sound.play()
 
 func update_mode_display() -> void:
 	if current_mode == Global.GameMode.MATH:
@@ -135,12 +141,14 @@ func update_card_samples() -> void:
 func start_game() -> void:
 	# Kill all active tweens before changing scene to prevent crashes
 	kill_all_tweens()
-	# TODO: Play start sound
+	if Global.sound_enabled:
+		start_sound.play()
 	Global.start_game(current_mode, current_difficulty)
 	Global.change_scene("res://scenes/Gameplay.tscn")
 
 func go_back() -> void:
 	# Kill all active tweens before changing scene to prevent crashes
 	kill_all_tweens()
-	# TODO: Play back sound
+	if Global.sound_enabled:
+		back_sound.play()
 	Global.change_scene("res://scenes/MainMenu.tscn")

@@ -10,6 +10,9 @@ enum MenuCard { TUTORIAL, JOGAR, OPCOES }
 @onready var card_opcoes: Panel = $VBoxContainer/CardsContainer/CardOpcoes
 @onready var instructions_label: Label = $VBoxContainer/InstructionsLabel
 @onready var high_score_label: Label = $HighScoreLabel
+@onready var music_player: AudioStreamPlayer = $MusicPlayer
+@onready var nav_sound: AudioStreamPlayer = $NavSound
+@onready var select_sound: AudioStreamPlayer = $SelectSound
 
 var current_card: MenuCard = MenuCard.JOGAR
 var cards: Array[Panel] = []
@@ -27,6 +30,10 @@ func _ready() -> void:
 	
 	# Display high score (show the highest of all)
 	update_high_score_display()
+	
+	# Music control
+	if not Global.music_enabled:
+		music_player.stop()
 
 func _input(event: InputEvent) -> void:
 	var viewport = get_viewport()
@@ -47,7 +54,8 @@ func _input(event: InputEvent) -> void:
 func navigate_card(direction: int) -> void:
 	current_card = wrapi(current_card + direction, 0, MenuCard.size())
 	update_cards()
-	# TODO: Play navigation sound
+	if Global.sound_enabled:
+		nav_sound.play()
 
 func update_cards() -> void:
 	# Kill all existing tweens first
@@ -82,7 +90,9 @@ func select_card() -> void:
 	# Kill all active tweens before changing scene to prevent crashes
 	kill_all_tweens()
 	
-	# TODO: Play selection sound
+	if Global.sound_enabled:
+		select_sound.play()
+	
 	match current_card:
 		MenuCard.TUTORIAL:
 			Global.change_scene("res://scenes/Tutorial.tscn")

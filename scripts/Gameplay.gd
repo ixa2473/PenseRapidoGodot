@@ -15,6 +15,10 @@ extends Control
 @onready var option_buttons_container: VBoxContainer = $BottomBar/InputContainer/OptionButtonsContainer
 
 @onready var explanation_popup: Panel = $ExplanationPopup
+@onready var gameplay_music: AudioStreamPlayer = $GameplayMusic
+@onready var correct_sound: AudioStreamPlayer = $CorrectSound
+@onready var wrong_sound: AudioStreamPlayer = $WrongSound
+@onready var timer_sound: AudioStreamPlayer = $TimerSound
 
 var phase_boxes: Array[Panel] = []
 var current_question: Dictionary = {}
@@ -28,6 +32,8 @@ var question_start_time: float = 0.0
 var growth_time: float = 8.0
 
 func _ready() -> void:
+	if not Global.music_enabled:
+		gameplay_music.stop()
 	setup_phase_indicators()
 	setup_ui()
 	load_questions()
@@ -217,6 +223,16 @@ func start_growing_animation() -> void:
 	growth_tween.tween_property(question_label, "scale", Vector2(2.0, 2.0), growth_time)
 	growth_tween.finished.connect(_on_timeout)
 
+	if Global.sound_enabled and growth_time > 3.0:
+		var this_question_start_time = question_start_time
+		
+		var timer_tween = get_tree().create_timer(growth_time - 3.0, false)
+		timer_tween.timeout.connect(func():
+			# Only play the sound if it's still the same question
+			if is_instance_valid(timer_sound) and this_question_start_time == question_start_time:
+				timer_sound.play()
+		) 
+
 func _input(event: InputEvent) -> void:
 	var viewport = get_viewport()
 	if not viewport:
@@ -255,6 +271,8 @@ func _on_option_selected(option: String) -> void:
 	check_answer(option)
 
 func check_answer(answer: String) -> void:
+	timer_sound.stop()
+	
 	if current_question.is_empty():
 		return
 	
@@ -282,7 +300,8 @@ func check_answer(answer: String) -> void:
 		on_wrong_answer()
 
 func on_correct_answer() -> void:
-	# TODO: Play correct sound
+	if Global.sound_enabled:
+		correct_sound.play()
 	
 	# Calculate score based on time remaining
 	var time_elapsed = (Time.get_ticks_msec() / 1000.0) - question_start_time
@@ -299,8 +318,11 @@ func on_correct_answer() -> void:
 	# Next question
 	next_question()
 
-func on_wrong_answer() -> void:
-	# TODO: Play wrong sound
+func on_wrong_answer() -> void:	
+	timer_sound.stop()
+	
+	if Global.sound_enabled:
+		wrong_sound.play()
 	Global.lose_life()
 	update_lives_display()
 	

@@ -1,6 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bp4kf8xyd5j8n"]
+[gd_scene load_steps=7 format=3 uid="uid://bp4kf8xyd5j8n"]
 
 [ext_resource type="Script" uid="uid://cvjbvi1n8drvs" path="res://scripts/Gameplay.gd" id="1_gameplay"]
+[ext_resource type="AudioStream" uid="uid://66ux38lf8ghf" path="res://assets/audio/gameplay-music.mp3" id="2_i0j1k"]
+[ext_resource type="AudioStream" uid="uid://bsminqx06sh6a" path="res://assets/audio/correct-asnwer.mp3" id="3_l1m2n"]
+[ext_resource type="AudioStream" uid="uid://copoxi017fhag" path="res://assets/audio/wrong-answer.mp3" id="4_t9u0v"]
+[ext_resource type="AudioStream" uid="uid://be3e71rjixdeh" path="res://assets/audio/clock-effect.mp3" id="5_w7x8y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_popup"]
 bg_color = Color(0.15, 0.15, 0.2, 0.95)
@@ -209,6 +213,19 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.3, 1, 0.3, 1)
 theme_override_font_sizes/font_size = 18
 text = "SPACE CONTINUAR"
+
+[node name="GameplayMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_i0j1k")
+autoplay = true
+
+[node name="CorrectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_l1m2n")
+
+[node name="WrongSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_t9u0v")
+
+[node name="TimerSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_w7x8y")
 
 [connection signal="pressed" from="ExplanationPopup/VBoxContainer/ButtonsContainer/GiveUpButton" to="." method="_on_explanation_give_up_pressed"]
 [connection signal="pressed" from="ExplanationPopup/VBoxContainer/ButtonsContainer/ContinueButton" to="." method="_on_explanation_continue_pressed"]
