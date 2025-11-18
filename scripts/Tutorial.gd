@@ -36,13 +36,13 @@ Complete 7 fases respondendo perguntas corretamente antes que suas vidas acabem!
 • [b]Setas ← →[/b]: Escolher dificuldade
 • [b]Seta ↓[/b]: Alternar entre Matemática e Português
 • [b]SPACE[/b]: Começar jogo
-• [b]Shift[/b]: Voltar ao menu
+• [b]X[/b]: Voltar ao menu
 
 [color=#FFD84D]Durante o Jogo:[/color]
 • [b]SPACE[/b]: Ativar campo de resposta
 • [b]Digite[/b]: Sua resposta
 • [b]ENTER[/b]: Confirmar resposta
-• [b]Shift[/b]: Desistir (volta ao menu)
+• [b]X[/b]: Desistir (volta ao menu)
 
 [color=#4DFF4D]MECÂNICAS:[/color]
 
@@ -85,7 +85,7 @@ Responda perguntas sobre gramática brasileira.
 
 [/font_size]
 
-[center][color=#4DFF4D][font_size=28]SPACE ou Shift para voltar[/font_size][/color][/center]"""
+[center][color=#4DFF4D][font_size=28]SPACE ou X para voltar[/font_size][/color][/center]"""
 	
 	content_label.text = tutorial_text
 

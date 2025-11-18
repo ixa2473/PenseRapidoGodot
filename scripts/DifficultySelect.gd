@@ -83,10 +83,12 @@ func toggle_mode() -> void:
 func update_mode_display() -> void:
 	if current_mode == Global.GameMode.MATH:
 		mode_indicator.text = "MODO: MATEMÁTICA"
-		mode_indicator.add_theme_color_override("font_color", Color(0.3, 0.7, 1.0))
+		#mode_indicator.add_theme_color_override("font_color", Color(0.3, 0.7, 1))
+		mode_indicator.add_theme_color_override("font_outline_color", Color(0, 0.56, 1))
 	else:
 		mode_indicator.text = "MODO: PORTUGUÊS"
-		mode_indicator.add_theme_color_override("font_color", Color(0.3, 1.0, 0.5))
+		#mode_indicator.add_theme_color_override("font_color", Color(0.3, 1.0, 0.5))
+		mode_indicator.add_theme_color_override("font_outline_color", Color(0, 0.9, 0.5))
 
 func update_cards() -> void:
 	# Kill all existing tweens first
