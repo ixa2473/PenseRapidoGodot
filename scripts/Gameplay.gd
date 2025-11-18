@@ -242,7 +242,7 @@ func _input(event: InputEvent) -> void:
 		if event.is_action_pressed("ui_accept"):
 			hide_explanation()
 			viewport.set_input_as_handled()
-		elif event.is_action_pressed("ui_cancel"):
+		elif event.is_action_pressed("Back"):
 			# Handle input before scene change to avoid null viewport
 			viewport.set_input_as_handled()
 			give_up()
@@ -252,7 +252,7 @@ func _input(event: InputEvent) -> void:
 		if not option_buttons_container.visible:
 			activate_input()
 			viewport.set_input_as_handled()
-	elif event.is_action_pressed("ui_cancel"):
+	elif event.is_action_pressed("Back"):
 		# Handle input before scene change to avoid null viewport
 		viewport.set_input_as_handled()
 		give_up()

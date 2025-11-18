@@ -26,9 +26,9 @@ var math_samples = {
 }
 
 var language_samples = {
-	Global.Difficulty.FACIL: ["casa", "gato", "Idade: 6-7"],
-	Global.Difficulty.MEDIO: ["música", "fácil", "Idade: 7-8"],
-	Global.Difficulty.DIFICIL: ["Jícara", "Sedex", "Idade: 9"]
+	Global.Difficulty.FACIL: ["Casa", "Gato", "Idade: 6-7"],
+	Global.Difficulty.MEDIO: ["Música", "Cabeça", "Idade: 7-8"],
+	Global.Difficulty.DIFICIL: ["Xícara", "Sedex", "Idade: 9"]
 }
 
 func _ready() -> void:
@@ -57,7 +57,7 @@ func _input(event: InputEvent) -> void:
 		# Handle input before scene change to avoid null viewport
 		viewport.set_input_as_handled()
 		start_game()
-	elif event.is_action_pressed("ui_cancel"):
+	elif event.is_action_pressed("Back"):
 		# Handle input before scene change to avoid null viewport
 		viewport.set_input_as_handled()
 		go_back()

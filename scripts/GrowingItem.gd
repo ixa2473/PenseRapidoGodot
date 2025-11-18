@@ -59,4 +59,3 @@ func _process(delta: float) -> void:
 func _on_growth_finished() -> void:
 	is_growing = false
 	timeout_reached.emit()
-

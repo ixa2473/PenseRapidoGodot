@@ -23,7 +23,7 @@ func _input(event: InputEvent) -> void:
 		# Handle input before scene change to avoid null viewport
 		viewport.set_input_as_handled()
 		play_again()
-	elif event.is_action_pressed("ui_cancel"):
+	elif event.is_action_pressed("Back"):
 		# Handle input before scene change to avoid null viewport
 		viewport.set_input_as_handled()
 		go_to_menu()
@@ -77,4 +77,3 @@ func play_again() -> void:
 
 func go_to_menu() -> void:
 	Global.change_scene("res://scenes/MainMenu.tscn")
-
