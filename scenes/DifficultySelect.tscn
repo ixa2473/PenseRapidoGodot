@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cxp3j2vqewvyu"]
+[gd_scene load_steps=11 format=3 uid="uid://cxp3j2vqewvyu"]
 
 [ext_resource type="Script" uid="uid://bikong58p1ql2" path="res://scripts/DifficultySelect.gd" id="1_diff_select"]
 [ext_resource type="AudioStream" uid="uid://b1tqaw1lod81r" path="res://assets/audio/menu-move.mp3" id="2_a1b2c"]
+[ext_resource type="StyleBox" uid="uid://7gskvebtm8l7" path="res://assets/font_styles/WHITE_style_box_flat.tres" id="2_t85ry"]
 [ext_resource type="AudioStream" uid="uid://b1es5ja6dutbx" path="res://assets/audio/menu-click.mp3" id="3_d4e5f"]
 [ext_resource type="AudioStream" uid="uid://bsminqx06sh6a" path="res://assets/audio/correct-asnwer.mp3" id="4_l1m2n"]
 [ext_resource type="AudioStream" uid="uid://copoxi017fhag" path="res://assets/audio/wrong-answer.mp3" id="5_t9u0v"]
@@ -54,23 +55,28 @@ theme_override_constants/separation = 20
 [node name="TitleLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 56
 text = "Pense Rápido!"
 horizontal_alignment = 1
 
 [node name="VersionLabel" type="Label" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
-theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
-theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.69803923, 0.69803923, 0.69803923, 0)
+theme_override_font_sizes/font_size = 8
 text = "ver 1.00"
 horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
 
 [node name="ModeIndicator" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 1, 0.29803923, 1)
 theme_override_constants/outline_size = 16
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = ExtResource("2_t85ry")
 text = "MODO: MATEMÁTICA"
 horizontal_alignment = 1
 
@@ -248,21 +254,23 @@ theme_override_constants/separation = 40
 alignment = 1
 
 [node name="BackLabel" type="Label" parent="VBoxContainer/InstructionsContainer"]
+visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 0)
 theme_override_font_sizes/font_size = 22
 text = "Shift VOLTAR"
 
 [node name="ToggleLabel" type="Label" parent="VBoxContainer/InstructionsContainer"]
+visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 0)
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 14
 text = "↓ MUDAR PARA PORT"
 
 [node name="StartLabel" type="Label" parent="VBoxContainer/InstructionsContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.3, 1, 0.3, 0)
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 12
 text = "SPACE COMEÇAR!"
 
 [node name="InstructionsContainer2" type="HBoxContainer" parent="VBoxContainer"]

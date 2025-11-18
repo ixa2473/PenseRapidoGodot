@@ -84,7 +84,7 @@ alignment = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
 theme_override_font_sizes/font_size = 24
-text = "Shift VOLTAR"
+text = "X VOLTAR"
 
 [node name="PlayAgainLabel" type="Label" parent="VBoxContainer/InstructionsContainer"]
 layout_mode = 2

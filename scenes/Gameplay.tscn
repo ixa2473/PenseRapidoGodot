@@ -205,7 +205,7 @@ alignment = 1
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
-text = "Shift DESISTIR"
+text = "X DESISTIR"
 
 [node name="ContinueButton" type="Button" parent="ExplanationPopup/VBoxContainer/ButtonsContainer"]
 custom_minimum_size = Vector2(150, 50)

@@ -11,6 +11,7 @@ var is_victory: bool = false
 var is_new_high_score: bool = false
 
 func _ready() -> void:
+	print("<Game Over> script initiated")
 	determine_result()
 	display_stats()
 

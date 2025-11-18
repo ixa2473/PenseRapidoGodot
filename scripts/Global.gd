@@ -58,6 +58,7 @@ var menu_music_player: AudioStreamPlayer
 var gameplay_music_player: AudioStreamPlayer
 
 func _ready() -> void:
+	print("<Global> script initiated")
 	load_game()
 
 	menu_music_player = AudioStreamPlayer.new()

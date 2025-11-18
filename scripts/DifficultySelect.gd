@@ -12,6 +12,7 @@ extends Control
 @onready var toggle_sound: AudioStreamPlayer = $ToggleSound
 @onready var start_sound: AudioStreamPlayer = $StartSound
 @onready var back_sound: AudioStreamPlayer = $BackSound
+var style_box = preload("uid://7gskvebtm8l7")
 
 var current_difficulty: Global.Difficulty = Global.Difficulty.FACIL
 var current_mode: Global.GameMode = Global.GameMode.MATH
@@ -32,6 +33,7 @@ var language_samples = {
 }
 
 func _ready() -> void:
+	print("<Difficulty Select> script initiated")
 	version_label.text = "ver " + Global.VERSION
 	cards = [card_facil, card_medio, card_dificil]
 	
@@ -85,10 +87,12 @@ func update_mode_display() -> void:
 		mode_indicator.text = "MODO: MATEMÁTICA"
 		#mode_indicator.add_theme_color_override("font_color", Color(0.3, 0.7, 1))
 		mode_indicator.add_theme_color_override("font_outline_color", Color(0, 0.56, 1))
+		style_box.bg_color = Color(0, 0.56, 1, 0.3)
 	else:
 		mode_indicator.text = "MODO: PORTUGUÊS"
 		#mode_indicator.add_theme_color_override("font_color", Color(0.3, 1.0, 0.5))
 		mode_indicator.add_theme_color_override("font_outline_color", Color(0, 0.9, 0.5))
+		style_box.bg_color = Color(0, 0.9, 0.5, 0.3)
 
 func update_cards() -> void:
 	# Kill all existing tweens first

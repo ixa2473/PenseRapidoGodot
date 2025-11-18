@@ -32,6 +32,7 @@ var question_start_time: float = 0.0
 var growth_time: float = 8.0
 
 func _ready() -> void:
+	print("<Gameplay> script initiated")
 	if not Global.music_enabled:
 		gameplay_music.stop()
 	setup_phase_indicators()

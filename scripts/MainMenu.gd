@@ -13,12 +13,15 @@ enum MenuCard { TUTORIAL, JOGAR, OPCOES }
 @onready var music_player: AudioStreamPlayer = $MusicPlayer
 @onready var nav_sound: AudioStreamPlayer = $NavSound
 @onready var select_sound: AudioStreamPlayer = $SelectSound
+@onready var sound_on: TextureRect = $SoundON
+@onready var sound_off: TextureRect = $SoundOFF
 
 var current_card: MenuCard = MenuCard.JOGAR
 var cards: Array[Panel] = []
 var active_tweens: Array[Tween] = []
 
 func _ready() -> void:
+	print("<Main Menu> script initiated")
 	# Set up version display
 	version_label.text = "ver " + Global.VERSION
 	
@@ -106,14 +109,34 @@ func show_options_menu() -> void:
 	Global.sound_enabled = !Global.sound_enabled
 	Global.save_game()
 	# Show feedback
+	
 	var status = "LIGADO" if Global.sound_enabled else "DESLIGADO"
-	instructions_label.text = "SOM: " + status + " | SPACE CONFIRMAR"
+	#instructions_label.text = "SOM: " + status + " | SPACE CONFIRMAR"
+	var reset = false
+	if sound_on.visible:
+		sound_on.visible = false
+		reset = true
+	if sound_off.visible:
+		sound_off.visible = false
+		reset = true
+	
+	if status == "LIGADO":
+		sound_on.visible = true
+	if status == "DESLIGADO":
+		sound_off.visible = true
+	
+	await get_tree().create_timer(1.0).timeout
 	
 	# Reset after delay
-	await get_tree().create_timer(1.0).timeout
 	# Check if we're still valid (scene might have changed)
+	
 	if is_instance_valid(self):
-		instructions_label.text = "SPACE CONFIRMAR"
+		if !reset:
+			if sound_on.visible:
+				sound_on.visible = false
+			if sound_off.visible:
+				sound_off.visible = false
+		#instructions_label.text = "SPACE CONFIRMAR"
 
 func update_high_score_display() -> void:
 	var max_score = 0
