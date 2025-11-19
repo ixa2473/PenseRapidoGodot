@@ -1,6 +1,6 @@
 extends Control
 
-@onready var phase_container: HBoxContainer = $TopBar/PhaseContainer
+@onready var progress_container: HBoxContainer = $TopBar/PhaseContainer
 @onready var info_panel: VBoxContainer = $TopBar/InfoPanel
 @onready var mode_label: Label = $TopBar/InfoPanel/ModeLabel
 @onready var lives_label: Label = $TopBar/InfoPanel/LivesLabel
@@ -20,32 +20,41 @@ extends Control
 @onready var wrong_sound: AudioStreamPlayer = $WrongSound
 @onready var timer_sound: AudioStreamPlayer = $TimerSound
 
-var phase_boxes: Array[Panel] = []
+var progress_boxes: Array[Panel] = []
 var current_question: Dictionary = {}
 var all_questions: Array = []
 var used_questions: Array = []
-var questions_in_phase: int = 0
-var questions_answered_in_phase: int = 0
+var total_questions: int = 0
+var questions_answered: int = 0
 
 var growth_tween: Tween = null
 var question_start_time: float = 0.0
-var growth_time: float = 25.0
+var growth_time: float = 15.0
 
 func _ready() -> void:
 	print("<Gameplay> script initiated")
 	if not Global.music_enabled:
 		gameplay_music.stop()
-	setup_phase_indicators()
+ 
+
+
+	var settings = Global.get_difficulty_settings()
+	# The total number of questions is the product of questions per phase and number of phases.
+	total_questions = 12
+	questions_answered = 0
+
+	setup_progress_indicators()
 	setup_ui()
 	load_questions()
-	start_phase()
+	next_question()
 
-func setup_phase_indicators() -> void:
-	var settings = Global.get_difficulty_settings()
-	var total_phases = settings["phases"]
+func setup_progress_indicators() -> void:
+	# Clear any existing boxes, just in case
+	for child in progress_container.get_children():
+		child.queue_free()
+	progress_boxes.clear()
 	
-	 
-	for i in range(total_phases):
+	for i in range(total_questions):
 		var phase_box = Panel.new()
 		phase_box.custom_minimum_size = Vector2(50, 50)
 		
@@ -68,10 +77,10 @@ func setup_phase_indicators() -> void:
 		label.anchor_bottom = 1.0
 		phase_box.add_child(label)
 		
-		phase_container.add_child(phase_box)
-		phase_boxes.append(phase_box)
+		progress_container.add_child(phase_box)
+		progress_boxes.append(phase_box)
 	
-	update_phase_indicators()
+	update_progress_indicators()
 
 func setup_ui() -> void:
 	mode_label.text = "Modo " + Global.get_difficulty_name()
@@ -120,26 +129,11 @@ func load_questions() -> void:
 	else:
 		push_error("Failed to open questions file: " + file_path)
 
-func start_phase() -> void:
-	if Global.check_victory():
+func next_question() -> void:
+	if questions_answered >= total_questions:
 		game_over(true)
 		return
-	
-	var settings = Global.get_difficulty_settings()
-	questions_in_phase = settings["questions_per_phase"]
-	questions_answered_in_phase = 0
-	growth_time = 25.0
-	
-	update_phase_indicators()
-	next_question()
 
-func next_question() -> void:
-	if questions_answered_in_phase >= questions_in_phase:
-		# Phase complete
-		Global.advance_phase()
-		start_phase()
-		return
-	
 	if Global.check_defeat():
 		game_over(false)
 		return
@@ -283,8 +277,7 @@ func check_answer(answer: String) -> void:
 		on_wrong_answer()
 
 func on_correct_answer() -> void:
-	if Global.sound_enabled:
-		correct_sound.play()
+	correct_sound.play()
 	
 	# Calculate score based on time remaining
 	var time_elapsed = (Time.get_ticks_msec() / 1000.0) - question_start_time
@@ -292,7 +285,8 @@ func on_correct_answer() -> void:
 	var points = int(time_remaining_percent * 100)
 	
 	Global.add_score(points)
-	questions_answered_in_phase += 1
+	questions_answered += 1
+	update_progress_indicators()
 	
 	# Stop animation
 	if growth_tween:
@@ -304,8 +298,7 @@ func on_correct_answer() -> void:
 func on_wrong_answer() -> void:	
 	timer_sound.stop()
 	
-	if Global.sound_enabled:
-		wrong_sound.play()
+	wrong_sound.play()
 	Global.lose_life()
 	update_lives_display()
 	
@@ -354,25 +347,22 @@ func update_lives_display() -> void:
 	else:
 		lives_label.add_theme_color_override("font_color", Color.GREEN)
 
-func update_phase_indicators() -> void:
-	for i in range(phase_boxes.size()):
+func update_progress_indicators() -> void:
+	for i in range(progress_boxes.size()):
 		var style = StyleBoxFlat.new()
 		style.corner_radius_top_left = 5
 		style.corner_radius_top_right = 5
 		style.corner_radius_bottom_left = 5
 		style.corner_radius_bottom_right = 5
 		
-		if i < Global.current_phase:
-			# Completed phase - green
+		if i < questions_answered:
+			# Completed question - green
 			style.bg_color = Color(0.3, 1.0, 0.3, 1.0)
-		elif i == Global.current_phase:
-			# Current phase - yellow
-			style.bg_color = Color(1.0, 0.85, 0.3, 1.0)
 		else:
-			# Future phase - gray
+			# Pending question - gray
 			style.bg_color = Color(0.3, 0.3, 0.3, 1.0)
 		
-		phase_boxes[i].add_theme_stylebox_override("panel", style)
+		progress_boxes[i].add_theme_stylebox_override("panel", style)
 
 func give_up() -> void:
 	# TODO: Show confirmation dialog

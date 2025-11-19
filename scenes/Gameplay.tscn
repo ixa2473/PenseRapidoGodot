@@ -7,7 +7,6 @@
 [ext_resource type="AudioStream" uid="uid://be3e71rjixdeh" path="res://assets/audio/clock-effect.mp3" id="5_w7x8y"]
 [ext_resource type="FontFile" uid="uid://drxgmdpn2ju3e" path="res://assets/fonts/Fredoka-Regular.ttf" id="6_fredoka"]
 
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_popup"]
 bg_color = Color(0.15, 0.15, 0.2, 0.95)
 corner_radius_top_left = 15
