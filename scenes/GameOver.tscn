@@ -90,4 +90,4 @@ text = "X VOLTAR"
 layout_mode = 2
 theme_override_colors/font_color = Color(0.3, 1, 0.3, 1)
 theme_override_font_sizes/font_size = 24
-text = "SPACE CONTINUAR!"
+text = "ENTER CONTINUAR!"

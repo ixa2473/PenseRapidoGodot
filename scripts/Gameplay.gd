@@ -26,10 +26,10 @@ var all_questions: Array = []
 var used_questions: Array = []
 var questions_in_phase: int = 0
 var questions_answered_in_phase: int = 0
-var is_input_active: bool = false
+
 var growth_tween: Tween = null
 var question_start_time: float = 0.0
-var growth_time: float = 8.0
+var growth_time: float = 25.0
 
 func _ready() -> void:
 	print("<Gameplay> script initiated")
@@ -44,6 +44,7 @@ func setup_phase_indicators() -> void:
 	var settings = Global.get_difficulty_settings()
 	var total_phases = settings["phases"]
 	
+	 
 	for i in range(total_phases):
 		var phase_box = Panel.new()
 		phase_box.custom_minimum_size = Vector2(50, 50)
@@ -127,7 +128,7 @@ func start_phase() -> void:
 	var settings = Global.get_difficulty_settings()
 	questions_in_phase = settings["questions_per_phase"]
 	questions_answered_in_phase = 0
-	growth_time = settings["growth_time"]
+	growth_time = 25.0
 	
 	update_phase_indicators()
 	next_question()
@@ -168,45 +169,34 @@ func display_question() -> void:
 	for child in option_buttons_container.get_children():
 		child.queue_free()
 	
-	if Global.current_mode == Global.GameMode.MATH:
-		question_label.text = current_question.get("text", "")
+	question_label.text = current_question.get("text", "")
+
+	var options = current_question.get("options", [])
+	var has_options = not options.is_empty()
+
+	# Default states
+	option_buttons_container.visible = false
+	answer_input.visible = false
+
+	if has_options:
+		# This is an options-based question (multiple choice)
+		option_buttons_container.visible = true
+		input_prompt.text = current_question.get("question", "Escolha uma opção:")
+		
+		for i in range(options.size()):
+			var btn = Button.new()
+			btn.text = options[i]
+			btn.custom_minimum_size = Vector2(200, 50)
+			btn.add_theme_font_size_override("font_size", 20)
+			btn.pressed.connect(_on_option_selected.bind(options[i]))
+			option_buttons_container.add_child(btn)
+	else:
+		# This is a text-input question, for any game mode
 		answer_input.visible = true
 		answer_input.editable = true
-		option_buttons_container.visible = false
 		input_prompt.text = "Digite e pressione ENTER"
-		is_input_active = true
-		answer_input.grab_focus()
-	else:
-		# Language mode
-		question_label.text = current_question.get("text", "")
-		
-		if current_question.get("type") == "classification" or current_question.get("type") == "syllable" or current_question.get("type") == "spelling":
-			# Show options as buttons
-			var options = current_question.get("options", [])
-			if not options.is_empty():
-				option_buttons_container.visible = true
-				answer_input.visible = false
-				input_prompt.text = current_question.get("question", "")
-				
-				for i in range(options.size()):
-					var btn = Button.new()
-					btn.text = options[i]
-					btn.custom_minimum_size = Vector2(200, 50)
-					btn.add_theme_font_size_override("font_size", 20)
-					btn.pressed.connect(_on_option_selected.bind(options[i]))
-					option_buttons_container.add_child(btn)
-			else:
-				answer_input.visible = false
-				answer_input.editable = false
-				option_buttons_container.visible = false
-				input_prompt.text = "ESPAÇO PARA DIGITAR"
-				is_input_active = false
-		else:
-			answer_input.visible = false
-			answer_input.editable = false
-			option_buttons_container.visible = false
-			input_prompt.text = "ESPAÇO PARA DIGITAR"
-			is_input_active = false
+
+		answer_input.call_deferred("grab_focus")
 	
 	# Only reset text and time - is_input_active is already set appropriately above
 	answer_input.text = ""
@@ -249,21 +239,13 @@ func _input(event: InputEvent) -> void:
 			give_up()
 		return
 	
-	if event.is_action_pressed("ui_accept") and not is_input_active:
-		if not option_buttons_container.visible:
-			activate_input()
-			viewport.set_input_as_handled()
+
 	elif event.is_action_pressed("Back"):
 		# Handle input before scene change to avoid null viewport
 		viewport.set_input_as_handled()
 		give_up()
 
-func activate_input() -> void:
-	is_input_active = true
-	answer_input.visible = true
-	answer_input.editable = true
-	answer_input.grab_focus()
-	input_prompt.text = "Digite e pressione ENTER"
+
 
 func _on_answer_submitted(answer_text: String) -> void:
 	check_answer(answer_text)
