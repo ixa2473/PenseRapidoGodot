@@ -187,10 +187,10 @@
 	  },
 	  {
 		"type": "syllable",
-		"text": "música",
+		"text": "andar",
 		"question": "Qual é a sílaba tônica?",
-		"syllables": ["mú", "si", "ca"],
-		"answer": "mú",
+		"syllables": ["an", "dar"],
+		"answer": "dar",
 		"explanation": "A sílaba tônica de 'música' é 'mú', sendo uma proparoxítona."
 	  },
 	  {
@@ -227,10 +227,10 @@
 	  },
 	  {
 		"type": "syllable",
-		"text": "lâmpada",
+		"text": "biscoito",
 		"question": "Qual é a sílaba tônica?",
-		"syllables": ["lâm", "pa", "da"],
-		"answer": "lâm",
+		"syllables": ["bis", "coi", "to"],
+		"answer": "coi",
 		"explanation": "A sílaba tônica de 'lâmpada' é 'lâm', sendo uma proparoxítona."
 	  },
 	  {
@@ -243,10 +243,10 @@
 	  },
 	  {
 		"type": "syllable",
-		"text": "jacaré",
+		"text": "radar",
 		"question": "Qual é a sílaba tônica?",
-		"syllables": ["ja", "ca", "ré"],
-		"answer": "ré",
+		"syllables": ["ra", "dar"],
+		"answer": "dar",
 		"explanation": "A sílaba tônica de 'jacaré' é 'ré', sendo uma oxítona."
 	  },
 	  {
@@ -267,10 +267,10 @@
 	  },
 	  {
 		"type": "syllable",
-		"text": "fácil",
+		"text": "facilitar",
 		"question": "Qual é a sílaba tônica?",
-		"syllables": ["fá", "cil"],
-		"answer": "fá",
+		"syllables": ["fa", "ci", "li", "tar"],
+		"answer": "tar",
 		"explanation": "A sílaba tônica de 'fácil' é 'fá', sendo uma paroxítona."
 	  },
 	  {
@@ -291,10 +291,10 @@
 	  },
 	  {
 		"type": "syllable",
-		"text": "difícil",
+		"text": "fortaleza",
 		"question": "Qual é a sílaba tônica?",
-		"syllables": ["di", "fí", "cil"],
-		"answer": "fí",
+		"syllables": ["for", "ta", "le","za"],
+		"answer": "le",
 		"explanation": "A sílaba tônica de 'difícil' é 'fí', sendo uma paroxítona."
 	  },
 	  {
@@ -315,10 +315,10 @@
 	  },
 	  {
 		"type": "syllable",
-		"text": "café",
+		"text": "onda",
 		"question": "Qual é a sílaba tônica?",
-		"syllables": ["ca", "fé"],
-		"answer": "fé",
+		"syllables": ["on", "da"],
+		"answer": "on",
 		"explanation": "A sílaba tônica de 'café' é 'fé', sendo uma oxítona."
 	  },
 	  {
@@ -339,10 +339,10 @@
 	  },
 	  {
 		"type": "syllable",
-		"text": "sofá",
+		"text": "Brasil",
 		"question": "Qual é a sílaba tônica?",
-		"syllables": ["so", "fá"],
-		"answer": "fá",
+		"syllables": ["Bra", "sil"],
+		"answer": "sil",
 		"explanation": "A sílaba tônica de 'sofá' é 'fá', sendo uma oxítona."
 	  },
 	  {
@@ -363,10 +363,10 @@
 	  },
 	  {
 		"type": "syllable",
-		"text": "árvore",
+		"text": "andar",
 		"question": "Qual é a sílaba tônica?",
-		"syllables": ["ár", "vo", "re"],
-		"answer": "ár",
+		"syllables": ["an", "dar"],
+		"answer": "dar",
 		"explanation": "A sílaba tônica de 'árvore' é 'ár', sendo uma proparoxítona."
 	  },
 	  {
@@ -387,10 +387,10 @@
 	  },
 	  {
 		"type": "syllable",
-		"text": "máquina",
+		"text": "tomate",
 		"question": "Qual é a sílaba tônica?",
-		"syllables": ["má", "qui", "na"],
-		"answer": "má",
+		"syllables": ["to", "ma", "te"],
+		"answer": "ma",
 		"explanation": "A sílaba tônica de 'máquina' é 'má', sendo uma proparoxítona."
 	  }
 	]
