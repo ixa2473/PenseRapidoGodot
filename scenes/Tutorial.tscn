@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dsj2k5s3fbj8v"]
+[gd_scene load_steps=4 format=3 uid="uid://dsj2k5s3fbj8v"]
 
 [ext_resource type="Script" uid="uid://m1600v51veu0" path="res://scripts/Tutorial.gd" id="1_tutorial"]
+[ext_resource type="FontFile" uid="uid://c64svb711vfcc" path="res://assets/fonts/Nunito-Regular.ttf" id="2_nunito"]
+[ext_resource type="FontFile" uid="uid://bv2iie8lv0efy" path="res://assets/fonts/Rubik-Regular.ttf" id="3_rubik"]
 
 [node name="Tutorial" type="Control"]
 layout_mode = 3
@@ -40,6 +42,7 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("2_nunito")
 bbcode_enabled = true
 fit_content = true
 scroll_following = true
@@ -51,5 +54,6 @@ offset_top = 2.0
 offset_right = 138.0
 offset_bottom = 36.0
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_fonts/font = ExtResource("2_nunito")
 theme_override_font_sizes/font_size = 24
 text = "[X] VOLTAR"

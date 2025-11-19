@@ -3,6 +3,8 @@ extends Control
 @onready var content_label: RichTextLabel = $VBoxContainer/ScrollContainer/ContentLabel
 
 func _ready() -> void:
+	var rubik_font = load("res://assets/fonts/Rubik-Regular.ttf")
+	content_label.add_theme_font_override("bold_font", rubik_font)
 	setup_tutorial_text()
 
 func _input(event: InputEvent) -> void:
@@ -20,13 +22,13 @@ func _input(event: InputEvent) -> void:
 		go_back()
 
 func setup_tutorial_text() -> void:
-	var tutorial_text = """[center][color=#FFD84D][font_size=42]Como Jogar Pense Rápido![/font_size][/color][/center]
+	var tutorial_text = """[center][b][font_size=42]Como Jogar Pense Rápido![/font_size][/b][/center]
 
 [font_size=24]
-[color=#4DFF4D]OBJETIVO:[/color]
+[b][color=#4DFF4D]OBJETIVO:[/color][/b]
 Complete 7 fases respondendo perguntas corretamente antes que suas vidas acabem!
 
-[color=#4DFF4D]CONTROLES:[/color]
+[b][color=#4DFF4D]CONTROLES:[/color][/b]
 
 [color=#FFD84D]Menu Principal:[/color]
 • [b]Setas ← →[/b]: Navegar entre opções
@@ -44,7 +46,7 @@ Complete 7 fases respondendo perguntas corretamente antes que suas vidas acabem!
 • [b]ENTER[/b]: Confirmar resposta
 • [b]X[/b]: Desistir (volta ao menu)
 
-[color=#4DFF4D]MECÂNICAS:[/color]
+[b][color=#4DFF4D]MECÂNICAS:[/color][/b]
 
 [color=#FFD84D]Perguntas Crescentes:[/color]
 As perguntas aparecem pequenas e crescem com o tempo.
@@ -64,7 +66,7 @@ Cada fase tem várias perguntas.
 • [b]MÉDIO[/b]: Perguntas intermediárias (6 segundos)
 • [b]DIFÍCIL[/b]: Perguntas avançadas, menos tempo (4 segundos)
 
-[color=#4DFF4D]MODOS DE JOGO:[/color]
+[b][color=#4DFF4D]MODOS DE JOGO:[/color][/b]
 
 [color=#FFD84D]Matemática:[/color]
 Resolva contas de adição, subtração, multiplicação e divisão.
@@ -77,7 +79,7 @@ Responda perguntas sobre gramática brasileira.
 • Ortografia (ç, ss, sc)
 • Prosódia (oxítona, paroxítona, proparoxítona)
 
-[color=#4DFF4D]DICAS:[/color]
+[b][color=#4DFF4D]DICAS:[/color][/b]
 • Fique atento ao tamanho da pergunta!
 • Quanto menor, mais tempo você tem
 • Use as explicações quando errar para aprender
@@ -85,7 +87,7 @@ Responda perguntas sobre gramática brasileira.
 
 [/font_size]
 
-[center][color=#4DFF4D][font_size=28]SPACE ou X para voltar[/font_size][/color][/center]"""
+[center][b][font_size=28]SPACE ou X para voltar[/font_size][/b][/center]"""
 	
 	content_label.text = tutorial_text
 

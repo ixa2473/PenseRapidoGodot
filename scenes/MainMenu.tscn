@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bh3hf0r4wt7qg"]
+[gd_scene load_steps=16 format=3 uid="uid://bh3hf0r4wt7qg"]
 
 [ext_resource type="Script" uid="uid://bewsq4537nwmj" path="res://scripts/MainMenu.gd" id="1_main_menu"]
 [ext_resource type="Texture2D" uid="uid://cvwsx00buyql6" path="res://assets/images/Icons/PlayGreen.png" id="2_0ykhv"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://bnxtumqvd5p7c" path="res://assets/images/Icons/slim-arrow-right.png" id="9_7la6k"]
 [ext_resource type="Texture2D" uid="uid://cnx6edgmox66g" path="res://assets/images/Icons/volume-on.png" id="10_2nypq"]
 [ext_resource type="Texture2D" uid="uid://olqvu1qvw5ns" path="res://assets/images/Icons/volume-off.png" id="11_bky6r"]
+[ext_resource type="FontFile" uid="uid://c64svb711vfcc" path="res://assets/fonts/Nunito-Regular.ttf" id="12_nunito"]
+[ext_resource type="FontFile" uid="uid://bv2iie8lv0efy" path="res://assets/fonts/Rubik-Regular.ttf" id="13_rubik"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card"]
 bg_color = Color(0.2, 0.25, 0.3, 1)
@@ -63,6 +65,7 @@ offset_top = 664.0
 offset_right = 108.0
 offset_bottom = 692.0
 theme_override_colors/font_color = Color(1, 1, 1, 0.2901961)
+theme_override_fonts/font = ExtResource("12_nunito")
 theme_override_font_sizes/font_size = 20
 text = "ver 1.00"
 horizontal_alignment = 1
@@ -86,6 +89,7 @@ theme_override_constants/separation = 30
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
+theme_override_fonts/font = ExtResource("13_rubik")
 theme_override_font_sizes/font_size = 64
 text = "Pense Rápido!"
 horizontal_alignment = 1
@@ -117,6 +121,7 @@ metadata/_edit_group_ = true
 [node name="TitleLabel" type="Label" parent="VBoxContainer/CardsContainer/CardTutorial/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.078431375, 0.69411767, 0.81960785, 1)
+theme_override_fonts/font = ExtResource("12_nunito")
 theme_override_font_sizes/font_size = 22
 text = "TUTORIAL"
 horizontal_alignment = 1
@@ -126,6 +131,7 @@ vertical_alignment = 1
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("12_nunito")
 theme_override_font_sizes/font_size = 18
 text = "Aprenda a jogar"
 horizontal_alignment = 1
@@ -185,6 +191,7 @@ metadata/_edit_group_ = true
 [node name="TitleLabel" type="Label" parent="VBoxContainer/CardsContainer/CardJogar/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.3, 1, 0.3, 1)
+theme_override_fonts/font = ExtResource("12_nunito")
 theme_override_font_sizes/font_size = 22
 text = "JOGAR"
 horizontal_alignment = 1
@@ -194,6 +201,7 @@ vertical_alignment = 1
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("12_nunito")
 theme_override_font_sizes/font_size = 18
 text = "Derrote perguntas
 de PORT/MAT"
@@ -222,6 +230,7 @@ metadata/_edit_group_ = true
 [node name="TitleLabel" type="Label" parent="VBoxContainer/CardsContainer/CardOpcoes/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.6862745, 0.105882354, 1)
+theme_override_fonts/font = ExtResource("12_nunito")
 theme_override_font_sizes/font_size = 22
 text = "OPÇÕES"
 horizontal_alignment = 1
@@ -231,6 +240,7 @@ vertical_alignment = 1
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("12_nunito")
 theme_override_font_sizes/font_size = 18
 text = "Áudio
 Vídeo"
@@ -257,6 +267,7 @@ texture = ExtResource("4_ow34m")
 [node name="InstructionsLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_fonts/font = ExtResource("12_nunito")
 theme_override_font_sizes/font_size = 24
 text = " "
 horizontal_alignment = 1
@@ -272,6 +283,7 @@ offset_right = -80.095215
 offset_bottom = 119.41006
 grow_horizontal = 0
 theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
+theme_override_fonts/font = ExtResource("12_nunito")
 theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxFlat_ow34m")
 text = "RECORDE: 0"
@@ -291,6 +303,7 @@ offset_bottom = 308.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 0.3882353)
+theme_override_fonts/font = ExtResource("12_nunito")
 theme_override_font_sizes/font_size = 20
 text = "Pressione [ESPAÇO] para selecionar."
 
