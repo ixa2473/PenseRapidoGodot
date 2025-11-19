@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8ejtf4h5xfxo"]
+[gd_scene load_steps=4 format=3 uid="uid://b8ejtf4h5xfxo"]
 
 [ext_resource type="Script" uid="uid://cmdcdmpmc34qg" path="res://scripts/GameOver.gd" id="1_gameover"]
+[ext_resource type="FontFile" uid="uid://c64svb711vfcc" path="res://assets/fonts/Nunito-Regular.ttf" id="2_nunito"]
+[ext_resource type="FontFile" uid="uid://bv2iie8lv0efy" path="res://assets/fonts/Rubik-Regular.ttf" id="3_rubik"]
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -39,6 +41,7 @@ alignment = 1
 [node name="ResultLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.3, 1, 0.3, 1)
+theme_override_fonts/font = ExtResource("3_rubik")
 theme_override_font_sizes/font_size = 72
 text = "VITÓRIA!"
 horizontal_alignment = 1
@@ -49,18 +52,21 @@ layout_mode = 2
 [node name="ScoreLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
+theme_override_fonts/font = ExtResource("2_nunito")
 theme_override_font_sizes/font_size = 36
 text = "Pontuação: 0"
 horizontal_alignment = 1
 
 [node name="PhasesLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_nunito")
 theme_override_font_sizes/font_size = 28
 text = "Fases Completadas: 0/7"
 horizontal_alignment = 1
 
 [node name="AccuracyLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_nunito")
 theme_override_font_sizes/font_size = 28
 text = "Precisão: 0%"
 horizontal_alignment = 1
@@ -68,6 +74,7 @@ horizontal_alignment = 1
 [node name="HighScoreLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
+theme_override_fonts/font = ExtResource("2_nunito")
 theme_override_font_sizes/font_size = 32
 text = "NOVO RECORDE!"
 horizontal_alignment = 1
@@ -83,11 +90,13 @@ alignment = 1
 [node name="BackLabel" type="Label" parent="VBoxContainer/InstructionsContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_fonts/font = ExtResource("2_nunito")
 theme_override_font_sizes/font_size = 24
 text = "X VOLTAR"
 
 [node name="PlayAgainLabel" type="Label" parent="VBoxContainer/InstructionsContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.3, 1, 0.3, 1)
+theme_override_fonts/font = ExtResource("2_nunito")
 theme_override_font_sizes/font_size = 24
 text = "ENTER CONTINUAR!"
