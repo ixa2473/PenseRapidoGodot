@@ -20,12 +20,11 @@ extends Control
 @onready var wrong_sound: AudioStreamPlayer = $WrongSound
 @onready var timer_sound: AudioStreamPlayer = $TimerSound
 
+
 var progress_boxes: Array[Panel] = []
 var current_question: Dictionary = {}
 var all_questions: Array = []
 var used_questions: Array = []
-var total_questions: int = 0
-var questions_answered: int = 0
 
 var growth_tween: Tween = null
 var question_start_time: float = 0.0
@@ -40,8 +39,8 @@ func _ready() -> void:
 
 	var settings = Global.get_difficulty_settings()
 	# The total number of questions is the product of questions per phase and number of phases.
-	total_questions = 12
-	questions_answered = 0
+	Global.total_questions = 12
+	Global.questions_answered = 0
 
 	setup_progress_indicators()
 	setup_ui()
@@ -54,7 +53,7 @@ func setup_progress_indicators() -> void:
 		child.queue_free()
 	progress_boxes.clear()
 	
-	for i in range(total_questions):
+	for i in range(Global.total_questions):
 		var phase_box = Panel.new()
 		phase_box.custom_minimum_size = Vector2(50, 50)
 		
@@ -130,7 +129,7 @@ func load_questions() -> void:
 		push_error("Failed to open questions file: " + file_path)
 
 func next_question() -> void:
-	if questions_answered >= total_questions:
+	if Global.questions_answered >= Global.total_questions:
 		game_over(true)
 		return
 
@@ -285,7 +284,7 @@ func on_correct_answer() -> void:
 	var points = int(time_remaining_percent * 100)
 	
 	Global.add_score(points)
-	questions_answered += 1
+	Global.questions_answered += 1
 	update_progress_indicators()
 	
 	# Stop animation
@@ -355,7 +354,7 @@ func update_progress_indicators() -> void:
 		style.corner_radius_bottom_left = 5
 		style.corner_radius_bottom_right = 5
 		
-		if i < questions_answered:
+		if i < Global.questions_answered:
 			# Completed question - green
 			style.bg_color = Color(0.3, 1.0, 0.3, 1.0)
 		else:
@@ -370,6 +369,7 @@ func give_up() -> void:
 
 func game_over(victory: bool) -> void:
 	# Save high score if applicable
+	Global.victory = victory
 	var is_new_high_score = Global.update_high_score()
 	
 	# Go to game over scene (will create next)

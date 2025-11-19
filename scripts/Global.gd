@@ -7,10 +7,12 @@ enum Difficulty { FACIL, MEDIO, DIFICIL }
 
 var current_mode: GameMode = GameMode.MATH
 var current_difficulty: Difficulty = Difficulty.FACIL
-var current_phase: int = 0
 var lives: int = 3
 var score: int = 0
 var correct_answers: int = 0
+var questions_answered: int = 0
+var total_questions: int = 0
+var victory: bool = false
 
 var sound_enabled: bool = true
 var music_enabled: bool = true
@@ -28,27 +30,21 @@ var high_scores: Dictionary = {
 const DIFFICULTY_SETTINGS = {
 	Difficulty.FACIL: {
 		"name": "FÁCIL",
-		"phases": 7,
 		"lives": 3,
 		"growth_time": 8.0,
-		"age_range": "6-7",
-		"questions_per_phase": 3
+		"age_range": "6-7"
 	},
 	Difficulty.MEDIO: {
 		"name": "MÉDIO",
-		"phases": 7,
 		"lives": 3,
 		"growth_time": 6.0,
-		"age_range": "7-8",
-		"questions_per_phase": 4
+		"age_range": "7-8"
 	},
 	Difficulty.DIFICIL: {
 		"name": "DIFÍCIL",
-		"phases": 7,
 		"lives": 3,
 		"growth_time": 4.0,
-		"age_range": "9",
-		"questions_per_phase": 5
+		"age_range": "9"
 	}
 }
 
@@ -77,10 +73,12 @@ func _ready() -> void:
 func start_game(mode: GameMode, difficulty: Difficulty) -> void:
 	current_mode = mode
 	current_difficulty = difficulty
-	current_phase = 0
 	lives = DIFFICULTY_SETTINGS[difficulty]["lives"]
 	score = 0
 	correct_answers = 0
+	questions_answered = 0
+	total_questions = 0
+	victory = false
 
 func get_difficulty_settings() -> Dictionary:
 	return DIFFICULTY_SETTINGS[current_difficulty]
@@ -91,18 +89,11 @@ func get_difficulty_name(difficulty: Difficulty = current_difficulty) -> String:
 func get_mode_name(mode: GameMode = current_mode) -> String:
 	return "Matemática" if mode == GameMode.MATH else "Português"
 
-func check_victory() -> bool:
-	var settings = get_difficulty_settings()
-	return current_phase >= settings["phases"] and lives > 0
-
 func check_defeat() -> bool:
 	return lives <= 0
 
 func lose_life() -> void:
 	lives = max(0, lives - 1)
-
-func advance_phase() -> void:
-	current_phase += 1
 
 func add_score(points: int) -> void:
 	score += points

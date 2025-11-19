@@ -30,9 +30,9 @@ func _input(event: InputEvent) -> void:
 		go_to_menu()
 
 func determine_result() -> void:
-	is_victory = Global.check_victory()
+	is_victory = Global.victory
 	is_new_high_score = Global.score > Global.get_current_high_score()
-	
+
 	if is_victory:
 		result_label.text = "VITÓRIA!"
 		result_label.add_theme_color_override("font_color", Color(0.3, 1.0, 0.3))
@@ -41,24 +41,19 @@ func determine_result() -> void:
 		result_label.text = "DERROTA!"
 		result_label.add_theme_color_override("font_color", Color(1.0, 0.3, 0.3))
 		# TODO: Play defeat sound
-
 func display_stats() -> void:
 	score_label.text = "Pontuação: " + str(Global.score)
-	
+
 	var settings = Global.get_difficulty_settings()
-	var total_phases = settings["phases"]
-	phases_label.text = "Fases Completadas: " + str(Global.current_phase) + "/" + str(total_phases)
-	
-	# Calculate accuracy (assuming questions per phase)
-	var questions_per_phase = settings["questions_per_phase"]
-	var total_expected = Global.current_phase * questions_per_phase
+	phases_label.text = "Fases Completadas: " + str(Global.questions_answered) + "/" + str(Global.total_questions)
+
+	# Calculate accuracy
 	var accuracy = 0.0
-	if total_expected > 0:
-		accuracy = (float(Global.correct_answers) / float(total_expected)) * 100.0
-	accuracy_label.text = "Precisão: %.1f%%" % accuracy
-	
-	# High score display
-	if is_new_high_score:
+	if Global.total_questions > 0:
+		accuracy = (float(Global.correct_answers) / float(Global.total_questions)) * 100.0
+		accuracy_label.text = "Precisão: %.1f%%" % accuracy
+
+	# High score display	if is_new_high_score:
 		high_score_label.text = "NOVO RECORDE!"
 		high_score_label.add_theme_color_override("font_color", Color(1.0, 0.85, 0.3))
 		high_score_label.visible = true
