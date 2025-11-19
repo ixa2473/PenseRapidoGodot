@@ -6,6 +6,7 @@ enum GameMode { MATH, LANGUAGE }
 enum Difficulty { FACIL, MEDIO, DIFICIL }
 
 var current_mode: GameMode = GameMode.MATH
+
 var current_difficulty: Difficulty = Difficulty.FACIL
 var lives: int = 3
 var score: int = 0

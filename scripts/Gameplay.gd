@@ -151,12 +151,11 @@ func next_question() -> void:
 	
 	# Display question
 	display_question()
-	start_growing_animation()
+	call_deferred("start_growing_animation")
 
 func display_question() -> void:
 	# Reset question display
 	question_label.scale = Vector2(0.3, 0.3)
-	question_label.pivot_offset = question_label.size / 2.0
 	
 	# Clear previous options
 	for child in option_buttons_container.get_children():
@@ -199,7 +198,7 @@ func start_growing_animation() -> void:
 	if growth_tween:
 		growth_tween.kill()
 	
-	question_label.scale = Vector2(0.3, 0.3)
+	question_label.pivot_offset = question_label.size / 2.0
 	
 	growth_tween = create_tween()
 	growth_tween.set_ease(Tween.EASE_IN)
