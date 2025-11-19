@@ -1,13 +1,13 @@
 extends Control
 
-enum MenuCard { TUTORIAL, JOGAR, OPCOES }
+enum MenuCard { TUTORIAL, JOGAR, AUDIO }
 
 @onready var title_label: Label = $VBoxContainer/TitleLabel
 @onready var version_label: Label = $ColorRect/VersionLabel
 @onready var cards_container: HBoxContainer = $VBoxContainer/CardsContainer
 @onready var card_tutorial: Panel = $VBoxContainer/CardsContainer/CardTutorial
 @onready var card_jogar: Panel = $VBoxContainer/CardsContainer/CardJogar
-@onready var card_opcoes: Panel = $VBoxContainer/CardsContainer/CardOpcoes
+@onready var card_audio: Panel = $VBoxContainer/CardsContainer/CardAudio
 @onready var instructions_label: Label = $VBoxContainer/InstructionsLabel
 @onready var high_score_label: Label = $HighScoreLabel
 @onready var music_player: AudioStreamPlayer = $MusicPlayer
@@ -26,7 +26,7 @@ func _ready() -> void:
 	version_label.text = "ver " + Global.VERSION
 	
 	# Collect cards
-	cards = [card_tutorial, card_jogar, card_opcoes]
+	cards = [card_tutorial, card_jogar, card_audio]
 	
 	# Update card visuals
 	update_cards()
@@ -101,42 +101,20 @@ func select_card() -> void:
 			Global.change_scene("res://scenes/Tutorial.tscn")
 		MenuCard.JOGAR:
 			Global.change_scene("res://scenes/DifficultySelect.tscn")
-		MenuCard.OPCOES:
-			show_options_menu()
+		MenuCard.AUDIO:
+			toggle_audio()
 
-func show_options_menu() -> void:
-	# Simple options toggle for now - can be expanded
-	Global.sound_enabled = !Global.sound_enabled
-	Global.save_game()
-	# Show feedback
+func toggle_audio() -> void:
+	Global.toggle_audio()
 	
-	var status = "LIGADO" if Global.sound_enabled else "DESLIGADO"
-	#instructions_label.text = "SOM: " + status + " | SPACE CONFIRMAR"
-	var reset = false
-	if sound_on.visible:
-		sound_on.visible = false
-		reset = true
-	if sound_off.visible:
-		sound_off.visible = false
-		reset = true
-	
-	if status == "LIGADO":
-		sound_on.visible = true
-	if status == "DESLIGADO":
-		sound_off.visible = true
-	
+	var is_audio_enabled = Global.is_audio_enabled()
+	sound_on.visible = is_audio_enabled
+	sound_off.visible = not is_audio_enabled
+
 	await get_tree().create_timer(1.0).timeout
-	
-	# Reset after delay
-	# Check if we're still valid (scene might have changed)
-	
 	if is_instance_valid(self):
-		if !reset:
-			if sound_on.visible:
-				sound_on.visible = false
-			if sound_off.visible:
-				sound_off.visible = false
-		#instructions_label.text = "SPACE CONFIRMAR"
+		sound_on.visible = false
+		sound_off.visible = false
 
 func update_high_score_display() -> void:
 	var max_score = 0

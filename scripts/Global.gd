@@ -180,3 +180,16 @@ func play_gameplay_music() -> void:
 func stop_gameplay_music() -> void:
 	if gameplay_music_player.playing:
 		gameplay_music_player.stop()
+
+func is_audio_enabled() -> bool:
+	return sound_enabled and music_enabled
+
+func toggle_audio() -> void:
+	sound_enabled = not sound_enabled
+	music_enabled = not music_enabled
+	if music_enabled:
+		play_menu_music()
+	else:
+		stop_menu_music()
+		stop_gameplay_music()
+	save_game()
