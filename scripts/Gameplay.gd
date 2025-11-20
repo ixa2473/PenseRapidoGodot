@@ -28,17 +28,13 @@ var used_questions: Array = []
 
 var growth_tween: Tween = null
 var question_start_time: float = 0.0
-var growth_time: float = 15.0
+var growth_time: float = 10.0
 
 func _ready() -> void:
 	print("<Gameplay> script initiated")
 	if not Global.music_enabled:
 		gameplay_music.stop()
  
-
-
-	var settings = Global.get_difficulty_settings()
-	# The total number of questions is the product of questions per phase and number of phases.
 	Global.total_questions = 12
 	Global.questions_answered = 0
 
@@ -48,7 +44,6 @@ func _ready() -> void:
 	next_question()
 
 func setup_progress_indicators() -> void:
-	# Clear any existing boxes, just in case
 	for child in progress_container.get_children():
 		child.queue_free()
 	progress_boxes.clear()
@@ -57,7 +52,6 @@ func setup_progress_indicators() -> void:
 		var phase_box = Panel.new()
 		phase_box.custom_minimum_size = Vector2(50, 50)
 		
-		# Create style
 		var style = StyleBoxFlat.new()
 		style.bg_color = Color(0.3, 0.3, 0.3, 1.0)
 		style.corner_radius_top_left = 5
