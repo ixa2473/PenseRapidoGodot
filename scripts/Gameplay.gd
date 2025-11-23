@@ -180,7 +180,7 @@ func display_question() -> void:
 		# This is a text-input question, for any game mode
 		answer_input.visible = true
 		answer_input.editable = true
-		input_prompt.text = "Digite e pressione ENTER"
+		input_prompt.text = current_question.get("question", "Digite e pressione ENTER")
 
 		answer_input.call_deferred("grab_focus")
 	
