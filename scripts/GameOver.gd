@@ -35,20 +35,24 @@ func _input(event: InputEvent) -> void:
 
 func determine_result() -> void:
 	is_victory = Global.victory
-	var highscores = Global.highscore_manager.get_top_highscores(1)
-	if highscores.size() > 0:
-		is_new_high_score = Global.score > highscores[0]["score"]
-	else:
-		is_new_high_score = true
-
+	var highscores = Global.highscore_manager.get_top_highscores(3)
+	
+	is_new_high_score = false # Default to false
+	
+	if Global.score > 0:
+		if highscores.size() < 3:
+			is_new_high_score = true
+		else:
+			# The highscore list is sorted descending, so the 3rd element is at index 2.
+			if Global.score > highscores[2]["score"]:
+				is_new_high_score = true
+	
 	if is_victory:
 		result_label.text = "VITÓRIA!"
 		result_label.add_theme_color_override("font_color", Color(0.3, 1.0, 0.3))
-		# TODO: Play victory sound
 	else:
 		result_label.text = "DERROTA!"
 		result_label.add_theme_color_override("font_color", Color(1.0, 0.3, 0.3))
-		# TODO: Play defeat sound
 
 func display_stats() -> void:
 	score_label.text = "Pontuação: " + str(Global.score)
