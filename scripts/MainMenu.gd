@@ -9,8 +9,7 @@ enum MenuCard { TUTORIAL, JOGAR, AUDIO }
 @onready var card_jogar: Panel = $VBoxContainer/CardsContainer/CardJogar
 @onready var card_audio: Panel = $VBoxContainer/CardsContainer/CardAudio
 @onready var instructions_label: Label = $VBoxContainer/InstructionsLabel
-@onready var high_score_label: Label = $HighScoreLabel
-@onready var music_player: AudioStreamPlayer = $MusicPlayer
+@onready var highscore_list: VBoxContainer = $HighScoreList
 @onready var nav_sound: AudioStreamPlayer = $NavSound
 @onready var select_sound: AudioStreamPlayer = $SelectSound
 @onready var sound_on: TextureRect = $SoundON
@@ -31,12 +30,9 @@ func _ready() -> void:
 	# Update card visuals
 	update_cards()
 	
-	# Display high score (show the highest of all)
-	update_high_score_display()
+	# Display high score
+	display_highscores()
 	
-	# Music control
-	if not Global.music_enabled:
-		music_player.stop()
 
 func _input(event: InputEvent) -> void:
 	var viewport = get_viewport()
@@ -116,14 +112,15 @@ func toggle_audio() -> void:
 		sound_on.visible = false
 		sound_off.visible = false
 
-func update_high_score_display() -> void:
-	var max_score = 0
-	for key in Global.high_scores.keys():
-		if Global.high_scores[key] > max_score:
-			max_score = Global.high_scores[key]
-	
-	if max_score > 0:
-		high_score_label.text = "RECORDE: " + str(max_score)
-		high_score_label.visible = true
+func display_highscores():
+	var highscores = Global.highscore_manager.get_top_highscores(3)
+	if highscores.size() > 0:
+		for i in range(highscores.size()):
+			var highscore_entry = highscores[i]
+			var entry_label = Label.new()
+			entry_label.text = str(i+1) + ". " + highscore_entry["name"] + " - " + str(highscore_entry["score"])
+			highscore_list.add_child(entry_label)
 	else:
-		high_score_label.visible = false
+		var entry_label = Label.new()
+		entry_label.text = "Nenhum recorde ainda!"
+		highscore_list.add_child(entry_label)

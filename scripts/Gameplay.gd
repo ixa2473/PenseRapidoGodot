@@ -363,7 +363,6 @@ func give_up() -> void:
 func game_over(victory: bool) -> void:
 	# Save high score if applicable
 	Global.victory = victory
-	var is_new_high_score = Global.update_high_score()
 	
 	# Go to game over scene (will create next)
 	Global.change_scene("res://scenes/GameOver.tscn")

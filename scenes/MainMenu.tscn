@@ -272,22 +272,18 @@ theme_override_font_sizes/font_size = 24
 text = " "
 horizontal_alignment = 1
 
-[node name="HighScoreLabel" type="Label" parent="."]
+[node name="HighScoreList" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -260.09497
-offset_top = 72.41
-offset_right = -80.095215
-offset_bottom = 119.41006
+offset_left = -260.0
+offset_top = 72.0
+offset_right = -80.0
+offset_bottom = 120.0
 grow_horizontal = 0
-theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
-theme_override_fonts/font = ExtResource("12_nunito")
-theme_override_font_sizes/font_size = 28
-theme_override_styles/normal = SubResource("StyleBoxFlat_ow34m")
-text = "RECORDE: 0"
-horizontal_alignment = 1
+theme_override_constants/separation = 10
+alignment = 1
 
 [node name="PressioneEspacoLabel" type="Label" parent="."]
 layout_mode = 1
@@ -307,9 +303,7 @@ theme_override_fonts/font = ExtResource("12_nunito")
 theme_override_font_sizes/font_size = 20
 text = "Pressione [ESPAÇO] para selecionar."
 
-[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_qj5x2")
-autoplay = true
+
 
 [node name="NavSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_y3x5h")

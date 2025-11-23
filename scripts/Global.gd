@@ -18,16 +18,8 @@ var victory: bool = false
 var sound_enabled: bool = true
 var music_enabled: bool = true
 
-var high_scores: Dictionary = {
-	"math_facil": 0,
-	"math_medio": 0,
-	"math_dificil": 0,
-	"language_facil": 0,
-	"language_medio": 0,
-	"language_dificil": 0
-}
+var highscore_manager: Node
 
-# Difficulty constants
 const DIFFICULTY_SETTINGS = {
 	Difficulty.FACIL: {
 		"name": "FÁCIL",
@@ -53,22 +45,29 @@ const SAVE_PATH = "user://pense_rapido_save.cfg"
 
 var menu_music_player: AudioStreamPlayer
 var gameplay_music_player: AudioStreamPlayer
+var current_music: AudioStreamPlayer
 
 func _ready() -> void:
 	print("<Global> script initiated")
 	load_game()
 
-	menu_music_player = AudioStreamPlayer.new()
-	menu_music_player.stream = load("res://assets/audio/menu-music.mp3")
-	menu_music_player.name = "MenuMusicPlayer"
-	add_child(menu_music_player)
+	if not menu_music_player:
+		menu_music_player = AudioStreamPlayer.new()
+		menu_music_player.stream = load("res://assets/audio/menu-music.mp3")
+		menu_music_player.name = "MenuMusicPlayer"
+		add_child(menu_music_player)
 
-	gameplay_music_player = AudioStreamPlayer.new()
-	gameplay_music_player.stream = load("res://assets/audio/gameplay-music.mp3")
-	gameplay_music_player.name = "GameplayMusicPlayer"
-	add_child(gameplay_music_player)
+	if not gameplay_music_player:
+		gameplay_music_player = AudioStreamPlayer.new()
+		gameplay_music_player.stream = load("res://assets/audio/gameplay-music.mp3")
+		gameplay_music_player.name = "GameplayMusicPlayer"
+		add_child(gameplay_music_player)
+
+	highscore_manager = load("res://scripts/HighScore.gd").new()
+	add_child(highscore_manager)
 
 	get_tree().scene_changed.connect(on_scene_changed)
+	play_music(menu_music_player)
 
 
 func start_game(mode: GameMode, difficulty: Difficulty) -> void:
@@ -105,23 +104,8 @@ func get_high_score_key() -> String:
 	var diff_str = get_difficulty_name().to_lower()
 	return mode_str + "_" + diff_str
 
-func update_high_score() -> bool:
-	var key = get_high_score_key()
-	if score > high_scores.get(key, 0):
-		high_scores[key] = score
-		save_game()
-		return true
-	return false
-
-func get_current_high_score() -> int:
-	var key = get_high_score_key()
-	return high_scores.get(key, 0)
-
 func save_game() -> void:
 	var config = ConfigFile.new()
-
-	for key in high_scores.keys():
-		config.set_value("HighScores", key, high_scores[key])
 
 	config.set_value("Settings", "sound_enabled", sound_enabled)
 	config.set_value("Settings", "music_enabled", music_enabled)
@@ -135,10 +119,6 @@ func load_game() -> void:
 	if err != OK:
 		return
 
-	for key in high_scores.keys():
-		if config.has_section_key("HighScores", key):
-			high_scores[key] = config.get_value("HighScores", key)
-
 	if config.has_section_key("Settings", "sound_enabled"):
 		sound_enabled = config.get_value("Settings", "sound_enabled")
 	if config.has_section_key("Settings", "music_enabled"):
@@ -147,31 +127,23 @@ func load_game() -> void:
 func change_scene(scene_path: String) -> void:
 	get_tree().change_scene_to_file(scene_path)
 
-func on_scene_changed(new_scene: Node) -> void:
-	var scene_path = new_scene.scene_file_path
-
+func on_scene_changed() -> void:
+	var scene_path = get_tree().current_scene.scene_file_path
 	if scene_path.to_lower() == "res://scenes/gameplay.tscn":
-		stop_menu_music()
-		play_gameplay_music()
+		play_music(gameplay_music_player)
 	else:
-		stop_gameplay_music()
-		play_menu_music()
+		play_music(menu_music_player)
 
-func play_menu_music() -> void:
-	if music_enabled and not menu_music_player.playing:
-		menu_music_player.play()
+func play_music(music_player: AudioStreamPlayer) -> void:
+	if music_enabled and current_music != music_player:
+		if current_music:
+			current_music.stop()
+		current_music = music_player
+		current_music.play()
 
-func stop_menu_music() -> void:
-	if menu_music_player.playing:
-		menu_music_player.stop()
-
-func play_gameplay_music() -> void:
-	if music_enabled and not gameplay_music_player.playing:
-		gameplay_music_player.play()
-
-func stop_gameplay_music() -> void:
-	if gameplay_music_player.playing:
-		gameplay_music_player.stop()
+func stop_music() -> void:
+	if current_music:
+		current_music.stop()
 
 func is_audio_enabled() -> bool:
 	return sound_enabled and music_enabled
@@ -180,8 +152,7 @@ func toggle_audio() -> void:
 	sound_enabled = not sound_enabled
 	music_enabled = not music_enabled
 	if music_enabled:
-		play_menu_music()
+		play_music(current_music)
 	else:
-		stop_menu_music()
-		stop_gameplay_music()
+		stop_music()
 	save_game()

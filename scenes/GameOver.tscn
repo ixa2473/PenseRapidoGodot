@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://b8ejtf4h5xfxo"]
 
-[ext_resource type="Script" uid="uid://cmdcdmpmc34qg" path="res://scripts/GameOver.gd" id="1_gameover"]
-[ext_resource type="FontFile" uid="uid://c64svb711vfcc" path="res://assets/fonts/Nunito-Regular.ttf" id="2_nunito"]
-[ext_resource type="FontFile" uid="uid://bv2iie8lv0efy" path="res://assets/fonts/Rubik-Regular.ttf" id="3_rubik"]
+[ext_resource type="Script" path="res://scripts/GameOver.gd" id="1_gameover"]
+[ext_resource type="FontFile" path="res://assets/fonts/Nunito-Regular.ttf" id="2_nunito"]
+[ext_resource type="FontFile" path="res://assets/fonts/Rubik-Regular.ttf" id="3_rubik"]
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -35,7 +35,7 @@ offset_right = 300.0
 offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 30
+theme_override_constants/separation = 15
 alignment = 1
 
 [node name="ResultLabel" type="Label" parent="VBoxContainer"]
@@ -79,6 +79,20 @@ theme_override_font_sizes/font_size = 32
 text = "NOVO RECORDE!"
 horizontal_alignment = 1
 
+[node name="NameEdit" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Digite seu nome"
+horizontal_alignment = 1
+max_length = 20
+
+[node name="SaveButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Salvar"
+
+[node name="HighscoreList" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
 [node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
 layout_mode = 2
 
@@ -100,3 +114,5 @@ theme_override_colors/font_color = Color(0.3, 1, 0.3, 1)
 theme_override_fonts/font = ExtResource("2_nunito")
 theme_override_font_sizes/font_size = 24
 text = "ENTER CONTINUAR!"
+
+[connection signal="pressed" from="VBoxContainer/SaveButton" to="." method="_on_SaveButton_pressed"]

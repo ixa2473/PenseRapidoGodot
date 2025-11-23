@@ -6,6 +6,9 @@ extends Control
 @onready var accuracy_label: Label = $VBoxContainer/AccuracyLabel
 @onready var high_score_label: Label = $VBoxContainer/HighScoreLabel
 @onready var instructions_container: HBoxContainer = $VBoxContainer/InstructionsContainer
+@onready var name_edit: LineEdit = $VBoxContainer/NameEdit
+@onready var save_button: Button = $VBoxContainer/SaveButton
+@onready var highscore_list: VBoxContainer = $VBoxContainer/HighscoreList
 
 var is_victory: bool = false
 var is_new_high_score: bool = false
@@ -14,6 +17,7 @@ func _ready() -> void:
 	print("<Game Over> script initiated")
 	determine_result()
 	display_stats()
+	display_highscores()
 
 func _input(event: InputEvent) -> void:
 	var viewport = get_viewport()
@@ -31,7 +35,11 @@ func _input(event: InputEvent) -> void:
 
 func determine_result() -> void:
 	is_victory = Global.victory
-	is_new_high_score = Global.score > Global.get_current_high_score()
+	var highscores = Global.highscore_manager.get_top_highscores(1)
+	if highscores.size() > 0:
+		is_new_high_score = Global.score > highscores[0]["score"]
+	else:
+		is_new_high_score = true
 
 	if is_victory:
 		result_label.text = "VITÓRIA!"
@@ -41,6 +49,7 @@ func determine_result() -> void:
 		result_label.text = "DERROTA!"
 		result_label.add_theme_color_override("font_color", Color(1.0, 0.3, 0.3))
 		# TODO: Play defeat sound
+
 func display_stats() -> void:
 	score_label.text = "Pontuação: " + str(Global.score)
 
@@ -53,18 +62,25 @@ func display_stats() -> void:
 		accuracy = (float(Global.correct_answers) / float(Global.total_questions)) * 100.0
 		accuracy_label.text = "Precisão: %.1f%%" % accuracy
 
-	# High score display	if is_new_high_score:
+	# High score display
+	if is_new_high_score:
 		high_score_label.text = "NOVO RECORDE!"
 		high_score_label.add_theme_color_override("font_color", Color(1.0, 0.85, 0.3))
 		high_score_label.visible = true
+		name_edit.visible = true
+		save_button.visible = true
 	else:
-		var current_high = Global.get_current_high_score()
-		if current_high > 0:
-			high_score_label.text = "Recorde: " + str(current_high)
-			high_score_label.add_theme_color_override("font_color", Color(0.7, 0.7, 0.7))
-			high_score_label.visible = true
-		else:
-			high_score_label.visible = false
+		high_score_label.visible = false
+		name_edit.visible = false
+		save_button.visible = false
+
+func display_highscores():
+	var highscores = Global.highscore_manager.get_top_highscores(3)
+	for i in range(highscores.size()):
+		var highscore_entry = highscores[i]
+		var entry_label = Label.new()
+		entry_label.text = str(i+1) + ". " + highscore_entry["name"] + " - " + str(highscore_entry["score"])
+		highscore_list.add_child(entry_label)
 
 func play_again() -> void:
 	# Restart with same mode and difficulty
@@ -73,3 +89,14 @@ func play_again() -> void:
 
 func go_to_menu() -> void:
 	Global.change_scene("res://scenes/MainMenu.tscn")
+
+func _on_SaveButton_pressed():
+	if name_edit.text.is_empty():
+		return
+	Global.highscore_manager.add_highscore(name_edit.text, Global.score)
+	name_edit.visible = false
+	save_button.visible = false
+	# Refresh highscore display
+	for child in highscore_list.get_children():
+		child.queue_free()
+	display_highscores()
